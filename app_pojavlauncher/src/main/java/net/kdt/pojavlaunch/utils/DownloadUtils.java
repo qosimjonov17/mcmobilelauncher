@@ -15,7 +15,9 @@ import org.apache.commons.io.*;
 @SuppressWarnings("IOStreamConstructor")
 public class DownloadUtils {
     public static final String USER_AGENT = Tools.APP_NAME;
-    private static final int TIME_OUT = 10000;
+    // Sekin mobil tarmoqlar uchun 10 soniya juda kam edi
+    private static final int TIME_OUT = 30000;
+    private static final int MAX_ATTEMPTS = 5;
 
     public static void download(String url, OutputStream os) throws IOException {
         download(new URL(url), os);
@@ -146,23 +148,41 @@ public class DownloadUtils {
         return file.exists() && Tools.compareSHA1(file, sha1);
     }
 
+    /** Runs the download, retrying network errors with a growing pause so one dropped connection does not fail the whole game download. */
+    private static <T> T downloadFileWithRetries(Callable<T> downloadFunction) throws IOException {
+        for (int attempt = 1; ; attempt++) {
+            try {
+                return downloadFile(downloadFunction);
+            } catch (IOException e) {
+                if (attempt >= MAX_ATTEMPTS) throw e;
+                Log.w("DownloadUtils", "Download failed (attempt " + attempt + "/" + MAX_ATTEMPTS + "), retrying", e);
+                try {
+                    Thread.sleep(1000L << (attempt - 1));
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw e;
+                }
+            }
+        }
+    }
+
     public static <T> T ensureSha1(File outputFile, @Nullable String sha1, Callable<T> downloadFunction) throws IOException {
         // Skip if needed
         if(sha1 == null) {
             // If the file exists and we don't know it's SHA1, don't try to redownload it.
             if(outputFile.exists()) return null;
-            else return downloadFile(downloadFunction);
+            else return downloadFileWithRetries(downloadFunction);
         }
 
         int attempts = 0;
         boolean fileOkay = verifyFile(outputFile, sha1);
         T result = null;
-        while (attempts < 5 && !fileOkay){
+        while (attempts < MAX_ATTEMPTS && !fileOkay){
             attempts++;
-            downloadFile(downloadFunction);
+            downloadFileWithRetries(downloadFunction);
             fileOkay = verifyFile(outputFile, sha1);
         }
-        if(!fileOkay) throw new SHA1VerificationException("SHA1 verifcation failed after 5 download attempts");
+        if(!fileOkay) throw new SHA1VerificationException("SHA1 verifcation failed after " + MAX_ATTEMPTS + " download attempts");
         return result;
     }
 
