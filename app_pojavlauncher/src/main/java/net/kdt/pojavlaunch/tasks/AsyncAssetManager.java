@@ -123,8 +123,14 @@ public class AsyncAssetManager {
             InputStream is = am.open("components/lwjgl3/" + lwjglVer + "/version");
             String pathToLwjglNatives = String.format("lwjgl-%s-natives/", lwjglVer) + sArch;
 
+            // The version file lives in the game directory, which survives an app reinstall on
+            // Android 9 and older, while the natives live in app data, which does not. Always
+            // re-extract when the natives are missing, whatever the version file says.
+            String[] extractedNatives = new File(rootDir, pathToLwjglNatives).list();
+            boolean nativesMissing = extractedNatives == null || extractedNatives.length == 0;
+
             boolean shouldUpdate = true;
-            if (versionFile.exists()) {
+            if (versionFile.exists() && !nativesMissing) {
                 FileInputStream fis = new FileInputStream(versionFile);
                 String release1 = Tools.read(is);
                 String release2 = Tools.read(fis);
