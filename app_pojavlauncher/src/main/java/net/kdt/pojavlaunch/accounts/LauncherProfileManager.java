@@ -81,6 +81,56 @@ public final class LauncherProfileManager {
         return guest;
     }
 
+    /** Creates or updates the Google launcher profile for this email and selects it */
+    public static synchronized LauncherProfile saveGoogle(String email, @Nullable String displayName) {
+        Store store = store();
+        LauncherProfile google = null;
+        for (LauncherProfile profile : store.profiles) {
+            if (profile.type == LauncherProfile.Type.GOOGLE && email.equalsIgnoreCase(profile.email)) {
+                google = profile;
+                break;
+            }
+        }
+        if (google == null) {
+            google = new LauncherProfile();
+            google.id = UUID.randomUUID().toString();
+            google.type = LauncherProfile.Type.GOOGLE;
+            google.email = email;
+            google.createdAt = System.currentTimeMillis();
+            store.profiles.add(google);
+        }
+        google.displayName = displayName == null || displayName.trim().isEmpty() ? email : displayName.trim();
+        store.currentId = google.id;
+        save();
+        return google;
+    }
+
+    /** @return the signed-in Google launcher profile, if any */
+    @Nullable
+    public static synchronized LauncherProfile getGoogleProfile() {
+        for (LauncherProfile profile : store().profiles) {
+            if (profile.type == LauncherProfile.Type.GOOGLE) return profile;
+        }
+        return null;
+    }
+
+    /** Adds a guest profile restored from a backup, unless one with that name already exists */
+    public static synchronized void addGuestIfMissing(@Nullable String nickname) {
+        if (!isValidNickname(nickname)) return;
+        Store store = store();
+        for (LauncherProfile profile : store.profiles) {
+            if (profile.type == LauncherProfile.Type.GUEST && profile.displayName.equals(nickname.trim())) return;
+        }
+        LauncherProfile guest = new LauncherProfile();
+        guest.id = UUID.randomUUID().toString();
+        guest.type = LauncherProfile.Type.GUEST;
+        guest.displayName = nickname.trim();
+        guest.createdAt = System.currentTimeMillis();
+        store.profiles.add(guest);
+        if (store.currentId == null) store.currentId = guest.id;
+        save();
+    }
+
     public static synchronized void select(String id) {
         store().currentId = id;
         save();

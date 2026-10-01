@@ -65,10 +65,33 @@ demo-only files are not mixed with the full game.
 - Entry points: the account selection screen (shown on first start) and
   Settings → Launcher profile.
 
-## Planned: Google Sign-In and cloud sync
+## Google Sign-In and cloud sync
 
-Google Sign-In will create a `GOOGLE` launcher profile and back up launcher
-data (settings, control layouts, launcher profiles list) to the user's Google
-Drive app data folder. It needs a Google Cloud project with an OAuth client for
-the app's package name and signing certificate. Minecraft account files and
-tokens are never uploaded, and a Google profile never grants game access.
+Google sign-in is a launcher profile, not a Minecraft account. The code lives in `cloud/` and
+never references `MinecraftAccount` or the Microsoft login.
+
+| Step | Class | Notes |
+|---|---|---|
+| Sign in | `cloud/GoogleAuth.signIn` | Credential Manager "Sign in with Google" with the Web client ID in `@string/google_web_client_id`. Creates a `GOOGLE` launcher profile. |
+| Drive access | `cloud/GoogleAuth.authorizeDriveAppData` | Separate authorization for `drive.appdata` only. Shows the consent screen the first time or after the user revokes access. |
+| Backup / restore | `fragments/CloudSyncFragment`, `cloud/DriveAppDataClient` | Drive v3 REST on one file, `mayoq_launcher_backup.json`, in the hidden app data folder |
+| What is synced | `cloud/SyncSnapshot`, `cloud/CloudSync` | Allowlisted settings, control layouts (`controlmap/*.json`), launcher profile names |
+
+Never synced: the `accounts/` folder, the selected Minecraft account, Microsoft or Minecraft
+tokens, passwords, Google tokens, RAM allocation, Java runtime choice and absolute file paths.
+`SyncSnapshot` uses an allowlist, and the same allowlist and file name checks are applied again
+when restoring, so a tampered backup cannot write other settings or files outside `controlmap/`.
+
+Error handling:
+- Offline: checked before every request, with a message instead of a hang.
+- Expired token (HTTP 401/403): the token is cleared and requested again once.
+- Revoked access: the retry returns a consent screen, so the user can grant access again.
+- Missing Google Play services or no Google account on the device: a clear message.
+- Unreadable or newer-format backup: rejected without changing local settings.
+
+Google Cloud setup: OAuth clients exist for the debug package `uz.mayoq.launcher.debug` (debug
+keystore SHA-1 `17:D6:F8:A1:A3:8E:B2:EF:B7:B2:C7:A7:75:99:9C:F4:0D:46:84:10`). Release builds
+need their own Android OAuth client with the release key's SHA-1.
+
+Tests: `SyncSnapshotTest` checks the allowlist, typed round trips, tampered backups and file name
+validation. CI runs it with `testDebugUnitTest`.

@@ -494,4 +494,35 @@
     <string name="launcher_profile_none">Tanlanmagan. Mehmon sifatida davom etish uchun bosing.</string>
     <string name="launcher_profile_summary">Mehmon: %1$s</string>
 
+    <!-- Google orqali kirish va bulutli sinxronlash (faqat launcher maʼlumotlari; Microsoft dan mustaqil) -->
+    <string name="google_sign_in">Google orqali kirish</string>
+    <string name="google_sign_out">Google dan chiqish</string>
+    <string name="google_sign_in_done">Google orqali kirildi</string>
+    <string name="google_sign_out_done">Google dan chiqildi</string>
+    <string name="google_sign_in_unexpected">Google kutilmagan javob qaytardi. Qayta urinib koʻring.</string>
+    <string name="google_sign_in_no_account">Bu qurilmada Google akkaunti yoʻq. Android sozlamalarida akkaunt qoʻshing va qayta urinib koʻring.</string>
+    <string name="google_sign_in_failed">Google orqali kirib boʻlmadi. Internet aloqasini tekshirib, qayta urinib koʻring.</string>
+    <string name="google_signed_in_as">Kirilgan akkaunt: %1$s (%2$s)</string>
+    <string name="google_not_signed_in">Google ga kirilmagan</string>
+    <string name="launcher_profile_summary_google">Google: %1$s</string>
+    <string name="cloud_sync_title">Google akkaunti va bulutli sinxronlash</string>
+    <string name="cloud_sync_summary">Launcher sozlamalari va boshqaruvni Google Drive ga zaxiralash</string>
+    <string name="cloud_sync_description">Launcher sozlamalari, boshqaruv sxemalari va launcher profil nomlarini Google Drive dagi yashirin ilova papkasiga zaxiralaydi. Minecraft va Microsoft akkauntlari, tokenlar va parollar hech qachon yuklanmaydi.</string>
+    <string name="cloud_sync_backup">Google Drive ga zaxiralash</string>
+    <string name="cloud_sync_restore">Google Drive dan tiklash</string>
+    <string name="cloud_sync_restore_confirm">Joriy launcher sozlamalari va boshqaruv sxemalari zaxira nusxasi bilan almashtiriladi. Davom etasizmi?</string>
+    <string name="cloud_sync_backing_up">Zaxiralanmoqda…</string>
+    <string name="cloud_sync_restoring">Tiklanmoqda…</string>
+    <string name="cloud_sync_backup_done">Zaxira nusxasi Google Drive ga saqlandi</string>
+    <string name="cloud_sync_restore_done">Sozlamalar Google Drive dan tiklandi</string>
+    <string name="cloud_sync_no_backup">Google Drive da hali zaxira nusxasi yoʻq</string>
+    <string name="cloud_sync_permission_denied">Google Drive ga ruxsat berilmadi yoki bekor qilingan. Ruxsat berish uchun tugmani qayta bosing.</string>
+    <string name="cloud_sync_google_services_error">Google Play xizmatlari Google Drive ga ruxsat bera olmadi. Google Play xizmatlari oʻrnatilgan va yangilangan ekanini tekshiring.</string>
+    <string name="cloud_sync_bad_backup">Google Drive dagi zaxira nusxasini oʻqib boʻlmadi. U launcherning yangiroq versiyasidan boʻlishi mumkin.</string>
+    <string name="cloud_sync_network_error">Google Drive ga ulanib boʻlmadi. Internet aloqasini tekshirib, qayta urinib koʻring.</string>
+    <string name="cloud_sync_offline">Internet yoʻq. Internetga ulanib, qayta urinib koʻring.</string>
+    <string name="cloud_sync_sign_in_first">Avval Google orqali kiring.</string>
+    <string name="cloud_sync_never">Bu qurilmadan hali zaxira qilinmagan</string>
+    <string name="cloud_sync_last_backup">Oxirgi zaxira: %1$s</string>
+
 </resources>

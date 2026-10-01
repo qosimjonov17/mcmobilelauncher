@@ -7,7 +7,6 @@
     android:paddingHorizontal="@dimen/fragment_padding_medium">
 
     <LinearLayout
-        android:id="@+id/login_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -16,65 +15,77 @@
         android:paddingHorizontal="@dimen/_25sdp"
         android:paddingVertical="@dimen/_16sdp">
 
-        <!-- Minecraft accounts: what the game runs with. Ownership is verified by Microsoft. -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/auth_section_minecraft"
-            android:textSize="@dimen/_14ssp"
+            android:text="@string/cloud_sync_title"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_4sdp"
-            android:text="@string/auth_section_minecraft_description" />
+            android:text="@string/cloud_sync_description" />
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_microsoft_authentication"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="@string/auth_microsoft_account"
-            android:textSize="@dimen/_12ssp" />
-
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_local_authentication"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="@string/auth_local_account"
-            android:textSize="@dimen/_12ssp" />
-
-        <!-- Launcher profiles: who uses the launcher. Never grants access to the game. -->
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/cloud_account_text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_18sdp"
-            android:text="@string/auth_section_launcher"
-            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/cloud_last_sync_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:text="@string/auth_section_launcher_description" />
+            android:layout_marginTop="@dimen/_4sdp" />
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_guest_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="@string/auth_guest_profile"
-            android:textSize="@dimen/_12ssp" />
-
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_google_profile"
+        <ProgressBar
+            android:id="@+id/cloud_progress"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/cloud_status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp" />
+
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/cloud_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
             android:text="@string/google_sign_in"
+            android:textSize="@dimen/_12ssp" />
+
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/cloud_backup_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/cloud_sync_backup"
+            android:textSize="@dimen/_12ssp" />
+
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/cloud_restore_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/cloud_sync_restore"
+            android:textSize="@dimen/_12ssp" />
+
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/cloud_sign_out_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/google_sign_out"
             android:textSize="@dimen/_12ssp" />
     </LinearLayout>
 </ScrollView>

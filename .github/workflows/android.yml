@@ -61,6 +61,10 @@ jobs:
           mv app_pojavlauncher/build/outputs/apk/debug/app_pojavlauncher-debug.apk out/mayoq-${{ matrix.name }}.apk
           md5sum out/mayoq-${{ matrix.name }}.apk > out/mayoq-${{ matrix.name }}.md5
 
+      - name: Run unit tests
+        if: matrix.name == 'arm64'
+        run: gradle :app_pojavlauncher:testDebugUnitTest -PtargetAbi=${{ matrix.abi }}
+
       # Release APK faqat imzolash kaliti (GPLAY_KEYSTORE_PASSWORD secret) sozlanganda yigʻiladi.
       - name: Build Release .apk
         if: env.GPLAY_KEYSTORE_PASSWORD != ''

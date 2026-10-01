@@ -538,4 +538,36 @@
     <string name="launcher_profile_none">Not set. Tap to continue as a guest.</string>
     <string name="launcher_profile_summary">Guest: %1$s</string>
 
+    <!-- Google sign-in and cloud sync (launcher data only; independent from Microsoft) -->
+    <string name="google_web_client_id" translatable="false">979538230323-ckd3d3u5high3hu91aihiob6k1i8ev0n.apps.googleusercontent.com</string>
+    <string name="google_sign_in">Sign in with Google</string>
+    <string name="google_sign_out">Sign out of Google</string>
+    <string name="google_sign_in_done">Signed in with Google</string>
+    <string name="google_sign_out_done">Signed out of Google</string>
+    <string name="google_sign_in_unexpected">Google returned an unexpected sign-in result. Please try again.</string>
+    <string name="google_sign_in_no_account">No Google account is available on this device. Add one in Android settings and try again.</string>
+    <string name="google_sign_in_failed">Google sign-in failed. Check your internet connection and try again.</string>
+    <string name="google_signed_in_as">Signed in as %1$s (%2$s)</string>
+    <string name="google_not_signed_in">Not signed in to Google</string>
+    <string name="launcher_profile_summary_google">Google: %1$s</string>
+    <string name="cloud_sync_title">Google account and cloud sync</string>
+    <string name="cloud_sync_summary">Back up launcher settings and controls to Google Drive</string>
+    <string name="cloud_sync_description">Backs up launcher settings, control layouts and launcher profile names to a hidden app folder in your Google Drive. Minecraft and Microsoft accounts, tokens and passwords are never uploaded.</string>
+    <string name="cloud_sync_backup">Back up to Google Drive</string>
+    <string name="cloud_sync_restore">Restore from Google Drive</string>
+    <string name="cloud_sync_restore_confirm">Your current launcher settings and control layouts will be replaced by the backup. Continue?</string>
+    <string name="cloud_sync_backing_up">Backing up…</string>
+    <string name="cloud_sync_restoring">Restoring…</string>
+    <string name="cloud_sync_backup_done">Backup saved to Google Drive</string>
+    <string name="cloud_sync_restore_done">Settings restored from Google Drive</string>
+    <string name="cloud_sync_no_backup">No backup found in Google Drive yet</string>
+    <string name="cloud_sync_permission_denied">Google Drive access was not granted or was revoked. Tap the button again to allow access.</string>
+    <string name="cloud_sync_google_services_error">Google Play services could not authorize Google Drive. Make sure Google Play services is installed and up to date.</string>
+    <string name="cloud_sync_bad_backup">The backup in Google Drive could not be read. It may come from a newer launcher version.</string>
+    <string name="cloud_sync_network_error">Could not reach Google Drive. Check your internet connection and try again.</string>
+    <string name="cloud_sync_offline">You are offline. Connect to the internet and try again.</string>
+    <string name="cloud_sync_sign_in_first">Sign in with Google first.</string>
+    <string name="cloud_sync_never">No backup made from this device yet</string>
+    <string name="cloud_sync_last_backup">Last backup: %1$s</string>
+
 </resources>

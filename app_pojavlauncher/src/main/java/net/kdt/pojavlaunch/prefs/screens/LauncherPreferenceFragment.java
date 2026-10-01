@@ -16,6 +16,7 @@ import net.kdt.pojavlaunch.R;
 import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.accounts.LauncherProfile;
 import net.kdt.pojavlaunch.accounts.LauncherProfileManager;
+import net.kdt.pojavlaunch.fragments.CloudSyncFragment;
 import net.kdt.pojavlaunch.fragments.GuestProfileFragment;
 import net.kdt.pojavlaunch.prefs.LauncherPreferences;
 
@@ -39,6 +40,10 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
             Tools.swapFragment(requireActivity(), GuestProfileFragment.class, GuestProfileFragment.TAG, null);
             return true;
         });
+        requirePreference("cloud_sync").setOnPreferenceClickListener(preference -> {
+            Tools.swapFragment(requireActivity(), CloudSyncFragment.class, CloudSyncFragment.TAG, null);
+            return true;
+        });
     }
 
     private void updateLauncherProfileSummary() {
@@ -48,7 +53,9 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
         LauncherProfile profile = LauncherProfileManager.getCurrent();
         preference.setSummary(profile == null
                 ? getString(R.string.launcher_profile_none)
-                : getString(R.string.launcher_profile_summary, profile.displayName));
+                : getString(profile.type == LauncherProfile.Type.GOOGLE
+                        ? R.string.launcher_profile_summary_google
+                        : R.string.launcher_profile_summary, profile.displayName));
     }
 
     private void setupNotificationRequestPreference() {
