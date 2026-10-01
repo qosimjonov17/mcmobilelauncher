@@ -21,6 +21,7 @@ Repozitoriyga har safar oʻzgarish yuborilganda GitHub APK faylni avtomatik yig�
 1. GitHub da repozitoriyni oching va **Actions** boʻlimiga oʻting.
 2. Eng yuqoridagi yashil ✅ belgili **Android CI** ishga tushirishini tanlang (yigʻish ~30–60 daqiqa davom etadi).
 3. Sahifa pastidagi **Artifacts** boʻlimidan **app-debug (recommended)** ni yuklab oling.
+   Agar roʻyxatda hech narsa boʻlmasa: chap tomondan **Android CI** ni tanlang → **Run workflow** → **Run workflow**.
 4. ZIP ichidagi `app-debug.apk` ni telefonga oʻtkazib oʻrnating
    (Android “Nomaʼlum manbalardan oʻrnatish”ga ruxsat soʻraydi).
 
