@@ -13,6 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
     env:
       GPLAY_KEYSTORE_PASSWORD: ${{ secrets.GPLAY_KEYSTORE_PASSWORD }}
       CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
@@ -113,3 +115,17 @@ jobs:
         with:
           name: app-release
           path: out/app-release.*
+
+      # Telefondan oson yuklab olish uchun: APK "Releases" sahifasiga toʻgʻridan-toʻgʻri qoʻyiladi.
+      - name: Publish debug APK to "latest" release
+        if: github.event_name != 'pull_request'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: MC Mobile Launcher (soʻnggi build)
+          prerelease: true
+          target_commitish: ${{ github.sha }}
+          body: |
+            Soʻnggi avtomatik build: ${{ github.sha }}
+            Telefonda **app-debug.apk** ni bosing va oʻrnating.
+          files: out/app-debug.apk

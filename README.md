@@ -16,6 +16,10 @@ Asl loyihaning README fayli: [UPSTREAM_README.md](UPSTREAM_README.md).
 
 ## APK faylni qanday olish mumkin (kompyuter shart emas)
 
+**Eng oson yoʻl:** telefonda [Releases → latest](https://github.com/qosimjonov17/mcmobilelauncher/releases/tag/latest) sahifasini oching va `app-debug.apk` ni bosing.
+
+Yoki Actions orqali:
+
 Repozitoriyga har safar oʻzgarish yuborilganda GitHub APK faylni avtomatik yigʻadi:
 
 1. GitHub da repozitoriyni oching va **Actions** boʻlimiga oʻting.
