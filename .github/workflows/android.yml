@@ -78,16 +78,6 @@ jobs:
           ./scripts/languagelist_updater.sh
           mkdir out
 
-      - name: Build Release .apk
-        run: |
-          # Build the launcher
-          gradle :app_pojavlauncher:assembleRelease
-          mv app_pojavlauncher/build/outputs/apk/release/app_pojavlauncher-release.apk out/app-release.apk
-
-      - name: Gen md5sums
-        run: |
-          md5sum out/app-release.apk > out/app-release.md5
-
       - name: Build Debug .apk
         run: |
           # Build the launcher
@@ -98,6 +88,19 @@ jobs:
         run: |
           md5sum out/app-debug.apk > out/app-debug.md5
 
+      # Release APK faqat imzolash kaliti (GPLAY_KEYSTORE_PASSWORD secret) sozlanganda yigʻiladi.
+      - name: Build Release .apk
+        if: env.GPLAY_KEYSTORE_PASSWORD != ''
+        run: |
+          # Build the launcher
+          gradle :app_pojavlauncher:assembleRelease
+          mv app_pojavlauncher/build/outputs/apk/release/app_pojavlauncher-release.apk out/app-release.apk
+
+      - name: Gen release md5sums
+        if: env.GPLAY_KEYSTORE_PASSWORD != ''
+        run: |
+          md5sum out/app-release.apk > out/app-release.md5
+
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
@@ -105,6 +108,7 @@ jobs:
           path: out/app-debug.*
 
       - name: Upload release APK
+        if: env.GPLAY_KEYSTORE_PASSWORD != ''
         uses: actions/upload-artifact@v4
         with:
           name: app-release

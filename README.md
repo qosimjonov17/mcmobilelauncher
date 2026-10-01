@@ -1,153 +1,67 @@
-<h1 align="center">Angel Aura Amethyst</h1>
+# MC Mobile Launcher
 
-<img src="https://github.com/AngelAuraMC/Amethyst-Android/blob/v3_openjdk/app_pojavlauncher/src/main/assets/amethyst.png" align="left" width="130" height="130" alt="Amethyst logo">
+Android telefonlarda **Minecraft: Java Edition** oʻynash uchun oʻzbekcha launcher.
 
-[![Android CI](https://github.com/AngelAuraMC/Amethyst-Android/workflows/Android%20CI/badge.svg)](https://github.com/AngelAuraMC/Amethyst-Android/actions)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AngelAuraMC/Amethyst-Android)](https://github.com/AngelAuraMC/Amethyst-Android/actions)
-[![Crowdin](https://badges.crowdin.net/pojavlauncher/localized.svg)](https://crowdin.com/project/pojavlauncher)
-[![Discord](https://img.shields.io/discord/724163890803638273.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/5ptqkyZxEy)
+Loyiha ochiq manbali [Amethyst (Angel Aura MC)](https://github.com/AngelAuraMC/Amethyst-Android) launcheri asosida qurilgan.
+Amethyst esa [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) va [Boardwalk](https://github.com/zhuowei/Boardwalk) davomchisi.
+Asl loyihaning README fayli: [UPSTREAM_README.md](UPSTREAM_README.md).
 
-*From [Boardwalk](https://github.com/zhuowei/Boardwalk)'s ashes and [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher)'s ruined reputation, here comes Amethyst!*
+## Imkoniyatlar
 
-Amethyst is a launcher that allows you to play Minecraft: Java Edition on your Android and [iOS](https://github.com/AngelAuraMC/Amethyst-iOS) devices.
+- Minecraft Java Edition ning deyarli barcha versiyalari (eng eskilaridan eng yangilarigacha)
+- Fabric, Forge, NeoForge, Quilt, OptiFine va modpaklar
+- Microsoft akkaunti orqali kirish (litsenziyali oʻyin)
+- Sensorli boshqaruv, joystik, giroskop va geympad
+- Toʻliq **oʻzbek tilidagi** interfeys
 
-For more details, check out our [wiki](https://wiki.angelauramc.dev)!
+## APK faylni qanday olish mumkin (kompyuter shart emas)
 
-## Table of Contents
+Repozitoriyga har safar oʻzgarish yuborilganda GitHub APK faylni avtomatik yigʻadi:
 
-* [Introduction](#introduction)
-* [Getting Amethyst](#getting-amethyst)
-* [Building](#building)
-    * [Quick Build (Recommended)](#quick-build-recommended)
-    * [Detailed Build](#detailed-build)
-* [Current Status](#current-status)
-* [Known Issues](#known-issues)
-* [FAQ](#faq)
-* [Contributing](#contributing)
-* [Support](#support)
-* [License](#license)
-* [Credits & Dependencies](#credits--dependencies)
-* [Roadmap](#roadmap)
+1. GitHub da repozitoriyni oching va **Actions** boʻlimiga oʻting.
+2. Eng yuqoridagi yashil ✅ belgili **Android CI** ishga tushirishini tanlang (yigʻish ~30–60 daqiqa davom etadi).
+3. Sahifa pastidagi **Artifacts** boʻlimidan **app-debug (recommended)** ni yuklab oling.
+4. ZIP ichidagi `app-debug.apk` ni telefonga oʻtkazib oʻrnating
+   (Android “Nomaʼlum manbalardan oʻrnatish”ga ruxsat soʻraydi).
 
-## Introduction
+## Kompyuterda yigʻish (dasturchilar uchun)
 
-* Amethyst is a Minecraft: Java Edition launcher for Android and iOS based on [Boardwalk](https://github.com/zhuowei/Boardwalk) and [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher)
-* This launcher can launch almost all available Minecraft versions ranging from rd-132211 to 26.3-snapshot-1.
-* Modding via Forge and Fabric are also supported.
-* This repository contains source code for Android. For iOS/iPadOS, check out [Amethyst-iOS](https://github.com/AngelAuraMC/Amethyst-iOS).
+Kerak boʻladi: JDK 21, Android SDK va NDK (Android Studio bilan birga oʻrnatish eng oson).
 
-## Getting Amethyst
+```bash
+git clone --recursive https://github.com/qosimjonov17/mcmobilelauncher.git
+cd mcmobilelauncher
+./gradlew :app_pojavlauncher:assembleDebug
+```
 
-You can get Amethyst via two methods:
+Tayyor APK: `app_pojavlauncher/build/outputs/apk/debug/`.
 
-1. **Releases:** Download the latest prebuilt app from [nightly.link](https://nightly.link/AngelAuraMC/Amethyst-Android/workflows/android/v3_openjdk/app-debug%20%28recommended%29.zip) or select an older version from our [automatic builds](https://github.com/AngelAuraMC/Amethyst-Android/actions).
-2. **Build from Source:** Follow the [building instructions](#building) below.
+## Loyiha tuzilishi (qisqacha)
 
-## Building
+| Papka | Vazifasi |
+|---|---|
+| `app_pojavlauncher/` | Asosiy Android ilova (Java + C) |
+| `app_pojavlauncher/src/main/res/values-uz/strings.xml` | Oʻzbekcha tarjima |
+| `app_pojavlauncher/build.gradle` | Ilova nomi, paket ID (`uz.mcmobile.launcher`), versiya |
+| `jre_lwjgl3glfw/` | Minecraft ishlatadigan LWJGL/GLFW ning Android versiyasi |
+| `.github/workflows/android.yml` | APK ni avtomatik yigʻuvchi GitHub Actions |
 
-### Quick Build (Recommended)
+## Asl loyihadan yangilanishlarni olish
 
-The easiest way to build Amethyst is to use the pre-built JREs provided by our CI.
+```bash
+git remote add upstream https://github.com/AngelAuraMC/Amethyst-Android.git
+git fetch upstream v3_openjdk
+git merge upstream/v3_openjdk
+```
 
-1. Clone the repository: `git clone --recursive https://github.com/AngelAuraMC/Amethyst-Android.git`
-2. Build the launcher: `./gradlew :app_pojavlauncher:assembleDebug` (Use `gradlew.bat` on Windows)
+## Huquqiy eslatma
 
-The built APK will be located in `app_pojavlauncher/build/outputs/apk/debug/`.
+- Bu launcher Minecraft fayllarini oʻz ichida tarqatmaydi — ular toʻgʻridan-toʻgʻri Mojang serverlaridan yuklab olinadi.
+- Toʻliq oʻyin uchun Minecraft: Java Edition sotib olingan Microsoft akkaunti kerak.
+- Loyiha Mojang Studios yoki Microsoft bilan bogʻliq emas.
 
-### Detailed Build
+## Litsenziya
 
-If you need more control over the build process, follow these steps:
-
-1. **Java Runtime Environment (JRE):** Download the `jre8-pojav` artifact from our [CI auto builds](https://github.com/AngelAuraMC/openjdk-build-multiarch/actions).  This package contains pre-built JREs for all supported architectures.  If you need to build the JRE yourself, follow the instructions in the [android-openjdk-build-multiarch](https://github.com/AngelAuraMC/openjdk-build-multiarch) repository.
-
-2. **LWJGL:** The build instructions for the custom LWJGL are available over the [LWJGL repository](https://github.com/AngelAuraMC/lwjgl3).
-
-3. **Language List:** Because languages are auto-added by Crowdin, you need to run the language list generator before building. In the project directory, run:
-   * Linux/macOS:
-     ```bash
-     chmod +x scripts/languagelist_updater.sh
-     bash scripts/languagelist_updater.sh
-     ```
-   * Windows:
-     ```batch
-     scripts\languagelist_updater.bat
-     ```
-
-4. **Build GLFW stub:** `./gradlew :jre_lwjgl3glfw:build`
-
-5. **Build the launcher:** `./gradlew :app_pojavlauncher:assembleDebug` (Replace `gradlew` with `gradlew.bat` on Windows).
-
-## Current Status
-
-* [x] OpenJDK 8 Mobile port: ARM32, ARM64, x86, x86_64
-* [x] OpenJDK 17 Mobile port: ARM32, ARM64, x86, x86_64
-* [x] OpenJDK 21 Mobile port: ARM32, ARM64, x86, x86_64
-* [x] Headless mod installer
-* [x] Mod installer with GUI
-* [x] OpenGL in OpenJDK environment
-* [x] OpenAL (works on most devices)
-* [x] Support for Minecraft 1.12.2 and below
-* [x] Support for Minecraft 1.13 and above
-* [x] Support for Minecraft 1.17 (22w13a) and above
-* [x] Game surface zooming
-* [x] New input pipe rewritten to native code
-* [x] Rewritten entire controls system
-* [ ] More to come!
-
-## Known Issues
-
-See our [issue tracker](https://github.com/AngelAuraMC/Amethyst-Android/issues) for a list of known issues and their current status.
-
-## FAQ
-
-See our [wiki](https://wiki.angelauramc.dev/) for more information.
-
-## Contributing
-
-Contributions are welcome! We welcome any type of contribution, not only code. For example, you can help improve the [wiki](https://github.com/AngelAuraMC/angelauramc.github.io/), contribute to the [translations](https://crowdin.com/project/pojavlauncher), or submit bug reports and feature requests.
-
-Any code change should be submitted as a pull request. The description should explain what the code does and give steps to execute it.
-
-## Support
-
-For support, please join our [Discord server](https://discord.gg/5ptqkyZxEy).
-
-## License
-
-Amethyst is licensed under [GNU LGPLv3](https://github.com/AngelAuraMC/Amethyst-Android/blob/v3_openjdk/LICENSE).
-
-## Credits & Dependencies
-
-* [Boardwalk](https://github.com/zhuowei/Boardwalk) (JVM Launcher): Unknown License/[Apache License 2.0](https://github.com/zhuowei/Boardwalk/blob/master/LICENSE) or GNU GPLv2.
-* [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher): [GLGPL](https://github.com/PojavLauncherTeam/PojavLauncher/blob/v3_openjdk/LICENSE)
-* Android Support Libraries: [Apache License 2.0](https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt).
-* [GL4ES](https://github.com/AngelAuraMC/gl4es): [MIT License](https://github.com/ptitSeb/gl4es/blob/master/LICENSE).
-* [MobileGlues](https://github.com/MobileGL-Dev/MobileGlues): [LGPL-2.1 License](https://github.com/MobileGL-Dev/MobileGlues/blob/dev-es/LICENSE).
-* [Krypton Wrapper](https://github.com/BZLZHH/NG-GL4ES): [MIT License](https://github.com/BZLZHH/NG-GL4ES/blob/main/LICENSE)
-* [ANGLE](https://chromium.googlesource.com/angle/angle): [All Rights Reserved](app_pojavlauncher/src/main/assets/licenses/ANGLE_LICENSE).
-* [OpenJDK](https://github.com/AngelAuraMC/openjdk-multiarch-jdk8u): [GNU GPLv2 License](https://openjdk.java.net/legal/gplv2+ce.html).
-* [LWJGL3](https://github.com/AngelAuraMC/lwjgl3): [BSD-3 License](https://github.com/LWJGL/lwjgl3/blob/master/LICENSE.md).
-* [LWJGLX](https://github.com/AngelAuraMC/lwjglx) (LWJGL2 API compatibility layer for LWJGL3): unknown license.
-* [Mesa 3D Graphics Library](https://gitlab.freedesktop.org/mesa/mesa): [MIT License](https://docs.mesa3d.org/license.html).
-* [bhook](https://github.com/bytedance/bhook) (Used for exit code trapping): [MIT license](https://github.com/bytedance/bhook/blob/main/LICENSE).
-* [libepoxy](https://github.com/anholt/libepoxy): [MIT License](https://github.com/anholt/libepoxy/blob/master/COPYING).
-* [virglrenderer](https://github.com/AngelAuraMC/virglrenderer): [MIT License](https://gitlab.freedesktop.org/virgl/virglrenderer/-/blob/master/COPYING).
-* [OpenAL-Soft](https://github.com/kcat/openal-soft): [GNU GPLv2](app_pojavlauncher/src/main/assets/licenses/OPENAL-SOFT_GPL2)
-  * [oboe](https://github.com/google/oboe): [Apache License 2.0](app_pojavlauncher/src/main/assets/licenses/OBOE_APACHE2).
-  * [pfffft](https://bitbucket.org/jpommier/pffft/src/master/): [ARR](app_pojavlauncher/src/main/assets/licenses/PFFFT_LICENSE)
-* [SDL3](https://github.com/libsdl-org/SDL): [zlib License](https://github.com/libsdl-org/SDL/blob/main/LICENSE.txt)
-* [sdl2-compat](https://github.com/libsdl-org/sdl2-compat): [zlib License](https://github.com/libsdl-org/sdl2-compat/blob/main/LICENSE.txt)
-* Thanks to [MCHeads](https://mc-heads.net) for providing Minecraft avatars.
-
-## Roadmap
-
-We are currently focusing on:
-
-* Exploring new rendering technologies.
-
-Future plans include:
-
-* Improving stability and performance.
-* Enhancing the mod installation experience.
-
-We welcome community feedback and suggestions for our roadmap.  Please feel free to open a feature request in our [issue tracker](https://github.com/AngelAuraMC/Amethyst-Android/issues).
+Loyiha [GNU LGPLv3](LICENSE) litsenziyasi ostida tarqatiladi, xuddi asl Amethyst loyihasi kabi.
+Bu shuni anglatadiki, launcherning manba kodi har doim ochiq qolishi va asl mualliflar koʻrsatilishi kerak.
+Barcha mualliflik huquqlari va kutubxonalar roʻyxati: [UPSTREAM_README.md](UPSTREAM_README.md#credits--dependencies).

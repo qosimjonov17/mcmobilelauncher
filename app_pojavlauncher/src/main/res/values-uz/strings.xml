@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Oʻzbekcha (lotin yozuvi) tarjima. Apostrof oʻrniga ʻ (U+02BB) va ʼ (U+02BC) ishlatiladi, shuning uchun ularni ekranlash shart emas. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Login strings -->
+    <string name="login_online_username_hint">Foydalanuvchi nomi</string>
+    <string name="login_online_login_label">Kirish</string>
+
+    <!-- Hint -->
+    <string name="hint_control_mapping">"Kontekst menyusini ochish uchun yuqori markazdagi tishli gʻildirakni bosing ⚙\nSozlash uchun tugmani bosing: tahrirlash, oʻlchamini oʻzgartirish, oʻchirish yoki tugma vazifasini almashtirish."</string>
+
+    <!-- Warnings -->
+    <string name="warning_remove_account">Bu akkaunt oʻchiriladi!</string>
+
+    <!-- AlertDialog title -->
+    <string name="alerttitle_installmod">Mod oʻrnatuvchini tanlang</string>
+
+    <!-- Error messages -->
+    <string name="error_fatal">MC Mobile kutilmaganda ishdan chiqdi</string>
+    <string name="error_no_version">Versiya yoʻq!</string>
+    <string name="error_show_more">Koʻproq koʻrsatish</string>
+    <string name="error_show_less">Kamroq koʻrsatish</string>
+
+    <!-- Toast messages -->
+    <string name="toast_permission_denied">Xotiraga oʻqish/yozish ruxsati talab qilinadi!</string>
+    <string name="toast_optifine_success">Muvaffaqiyatli oʻrnatildi</string>
+
+    <!-- MCLauncherActivity: Tabs -->
+    <string name="mcl_tab_wiki">Viki</string>
+
+    <!-- MCLauncherActivity: Strings -->
+    <string name="mcl_launch_cleancache">Kesh fayllari tozalanmoqda</string>
+    <string name="mcl_launch_downloading">%s yuklab olinmoqda</string>
+    <string name="mcl_launch_downloading_progress">"%s yuklab olinmoqda (%.2f MB / %.2f MB)"</string>
+    <string name="mcl_launch_download_assets">Resurslarni yuklab olishga tayyorlanmoqda</string>
+
+    <string name="mcl_options">Sozlamalar</string>
+    <string name="mcl_option_customcontrol">Boshqaruv tugmalarini sozlash</string>
+
+    <string name="mcl_setting_title_use_surface_view">Muqobil surface renderingdan foydalanish</string>
+    <string name="mcl_setting_subtitle_use_surface_view">GPU yuklamasi yuqori boʻlganda unumdorlikni oshirishi mumkin.</string>
+    <string name="mcl_setting_title_ignore_notch">Ekran kesigini eʼtiborsiz qoldirish</string>
+    <string name="mcl_setting_subtitle_ignore_notch">Ekran kesigini (notch) eʼtiborsiz qoldirib, tasvirni uning ostigacha choʻzadi.\nOʻyinga toʻliqroq shoʻngʻishingizga yordam beradi.</string>
+    <string name="mcl_setting_title_resolution_scaler">Ruxsat masshtabi</string>
+    <string name="mcl_setting_subtitle_resolution_scaler">Oʻyin ruxsatini (resolution) pasaytirish imkonini beradi. 100% — toʻliq ruxsat.</string>
+    <string name="mcl_setting_title_longpresstrigger">Uzoq bosish kechikishi</string>
+    <string name="mcl_setting_subtitle_longpresstrigger">Bloklarni buzish va buyumlarni tashlash uchun uzoq bosish kechikishini oʻzgartiradi.</string>
+    <string name="mcl_setting_title_buttonscale">Boshqaruv tugmalari oʻlchami</string>
+    <string name="mcl_setting_subtitle_buttonscale">Tugmalar juda kichik boʻlsa, ularni kattalashtiring.</string>
+    <string name="mcl_setting_title_mousescale">Sichqoncha oʻlchami</string>
+    <string name="mcl_setting_subtitle_mousescale">Virtual sichqoncha oʻlchamini oʻzgartiradi.</string>
+    <string name="mcl_setting_title_javaargs">JVM ishga tushirish argumentlari</string>
+    <string name="mcl_setting_subtitle_javaargs">Ehtiyot boʻling, bilmasdan oʻzgartirsangiz oʻyin ishdan chiqishi mumkin.</string>
+    <string name="mcl_setting_title_renderer_settings">Qoʻshimcha renderer sozlamalari</string>
+    <string name="mcl_setting_title_renderer_subtitle">Rendererga xos sozlamalar</string>
+    <string name="mcl_setting_category_renderer">Renderer</string>
+    <string name="mcl_setting_renderer_gles2_4">Holy GL4ES - (faqat 1.21.4 dan past, tez)</string>
+    <string name="mcl_setting_renderer_ng_gl4es">Krypton Wrapper - (barcha versiyalar, tez)</string>
+    <string name="mcl_setting_renderer_vulkan_kopper_zink">Kopper Zink (Vulkan) - (barcha versiyalar, oʻrtacha)</string>
+    <string name="mcl_setting_renderer_vulkan_zink">Zink (Vulkan) - (barcha versiyalar, sekin)</string>
+    <string name="mcl_setting_renderer_mobileglues">SFPEW/MobileGlues (OpenGL ES) - (barcha versiyalar, tez)</string>
+    <string name="mcl_setting_renderer_ltw">LTW (OpenGL ES 3) - faqat 1.17+</string>
+    <string name="mcl_setting_veroption_release">Reliz</string>
+    <string name="mcl_setting_veroption_snapshot">Snapshot</string>
+    <string name="mcl_setting_veroption_oldalpha">Eski alfa</string>
+    <string name="mcl_setting_veroption_oldbeta">Eski beta</string>
+    <string name="mcl_version_clone">Nusxalash</string>
+
+    <!-- Global strings -->
+    <string name="global_edit">Tahrirlash</string>
+    <string name="global_error">Xato</string>
+    <string name="global_load">Yuklash</string>
+    <string name="global_name">Nomi</string>
+    <string name="global_remove">Olib tashlash</string>
+    <string name="global_clone">Nusxalash</string>
+    <string name="global_restart">Qayta ishga tushirish</string>
+    <string name="global_save">Saqlash</string>
+    <string name="global_unpacking">%s ochilmoqda</string>
+    <string name="global_error_field_empty">Bu maydon boʻsh boʻlishi mumkin emas</string>
+    <string name="global_waiting">Kuting</string>
+    <string name="global_select">Tanlash</string>
+    <string name="global_retry">Qayta urinish</string>
+    <string name="global_default">Standart</string>
+    <string name="global_off">Oʻchiq</string>
+
+    <!-- MainActivity: strings -->
+    <string name="mcn_exit_title">Ilova/oʻyin %d kodi bilan yopildi. Batafsil maʼlumot uchun latestlog.txt faylini tekshiring.</string>
+    <string name="mcn_signal_title">Ilova/oʻyin %d jiddiy signali bilan toʻxtatildi. Batafsil maʼlumot uchun latestlog.txt faylini tekshiring.</string>
+    <string name="mcn_exit_confirm">Haqiqatan ham majburan yopmoqchimisiz?</string>
+    <string name="mcn_check_fail_vulkan_support">Bu qurilmada Zink (Vulkan) renderer qoʻllab-quvvatlanmaydi!</string>
+
+    <!-- MainActivity: Control buttons -->
+    <string name="control_chat">Chat</string>
+    <string name="control_debug">Debug</string>
+    <string name="control_inventory">Inv</string>
+    <string name="control_thirdperson">3-shaxs</string>
+    <string name="control_mouse">Sichqoncha</string>
+    <string name="control_mouseoff">Sichqoncha: oʻchiq</string>
+    <string name="control_mouseon">Sichqoncha: yoqiq</string>
+
+    <!-- MainActivity: Menu advanced controls -->
+    <string name="control_forceclose">Majburan yopish</string>
+    <string name="control_viewout">Log chiqishi</string>
+    <string name="control_adebug">Kiritish debugi</string>
+    <string name="control_customkey">Maxsus tugma kodini yuborish</string>
+
+    <!-- ImportControlActivity Strings -->
+    <string name="import_control_label">Boshqaruvni import qilish</string>
+    <string name="import_control_invalid_file">Fayl notoʻgʻri yoki buzilgan</string>
+    <string name="import_control_import_button">boshqaruvni import qilish</string>
+    <string name="import_control_verifying_file">Fayl tekshirilmoqda, biroz kutib qayta urinib koʻring…</string>
+    <string name="import_control_invalid_name">Nom notoʻgʻri yoki bunday fayl allaqachon mavjud</string>
+    <string name="import_control_done">Import yakunlandi</string>
+
+    <string name="customctrl_toggle">Almashtiriladigan</string>
+    <string name="customctrl_size">Oʻlcham</string>
+
+    <string name="customctrl_mapping">Tugma vazifasi</string>
+    <string name="customctrl_orientation">Yoʻnalish</string>
+    <string name="customctrl_background_color">Fon rangi</string>
+    <string name="customctrl_corner_radius">Burchak radiusi</string>
+    <string name="customctrl_stroke_width">Chegara qalinligi</string>
+    <string name="customctrl_stroke_color">Chegara rangi</string>
+
+    <string name="customctrl_button_opacity">Tugma shaffofligi</string>
+
+    <string name="customctrl_addbutton">Tugma qoʻshish</string>
+    <string name="customctrl_addbutton_drawer">Tugmalar guruhini qoʻshish</string>
+    <string name="customctrl_addbutton_joystick">Joystik qoʻshish</string>
+    <string name="customctrl_addsubbutton">Ichki tugma qoʻshish</string>
+
+    <string name="customctrl_selectdefault">Standart boshqaruv sxemasini tanlash</string>
+    <string name="customctrl_export">Boshqaruv sxemasini eksport qilish</string>
+
+    <string name="main_share_logs">Log faylini ulashish</string>
+    <string name="main_install_jar_file">.jar faylini ishga tushirish</string>
+    <string name="main_play">Oʻynash</string>
+    <string name="autoram_info_msg">Xotira %d MB ga sozlandi</string>
+    <string name="mcl_setting_check_libraries">Yuklab olingandan keyin kutubxonalarni tekshirish</string>
+    <string name="mcl_setting_check_libraries_subtitle">Bu sozlama launcherni mavjud boʻlsa kutubxona xeshini tekshirishga majbur qiladi. Buzilgan yuklab olishlarning oldini oladi.</string>
+    <string name="dl_library_sha_fail">%s kutubxonasi buzilgan, u qayta yuklab olinadi</string>
+    <string name="dl_library_sha_unknown">%s kutubxonasini tekshirib boʻlmaydi, u toʻgʻri deb hisoblanadi</string>
+    <string name="dl_library_sha_pass">%s kutubxonasi butun va foydalanishga tayyor</string>
+    <string name="mcl_gamepad_SDL">SDL kontroller backendini yoqish</string>
+    <string name="mcl_gamepad_SDL_subtitle">SDL kontroller backendini yoqadi. Modlar bilan yaxshiroq ishlaydi. Ishlatilmasa, GLFW ga qaytadi.</string>
+    <string name="mcl_disable_gestures">Imo-ishoralarni oʻchirish</string>
+    <string name="mcl_disable_gestures_subtitle">Blokni buzish uchun ushlab turish, blok qoʻyish uchun bosish kabi imo-ishoralarni oʻchiradi.</string>
+    <string name="mcl_disable_swap_hand">Ikki marta bosib qoʻl almashtirishni oʻchirish</string>
+    <string name="mcl_disable_swap_hand_subtitle">Hotbardagi buyumni ikki marta bosib ikkinchi qoʻlga oʻtkazishni oʻchiradi.</string>
+    <string name="mcl_setting_title_mousespeed">Sichqoncha tezligi</string>
+    <string name="mcl_setting_subtitle_mousespeed">Virtual sichqoncha tezligini oʻzgartiradi.</string>
+    <string name="mcl_setting_title_grab_mouse">Virtual kursordan foydalanish</string>
+    <string name="mcl_setting_subtitle_grab_mouse">Kursor oʻyin ichida qolishini taʼminlaydi. Sichqoncha sensorli boshqaruv tugmalarini bosib yubormaydi.</string>
+    <string name="mcl_setting_title_keyboard_panning">Klaviatura uchun ekranni surish</string>
+    <string name="mcl_setting_subtitle_keyboard_panning">Klaviatura ochilganda ekranni yuqoriga suradi.</string>
+    <string name="customctrl_passthru">Sichqonchani oʻtkazib yuborish</string>
+    <string name="customctrl_swipeable">Surib bosiladigan</string>
+    <string name="customctrl_forward_lock">Oldinga harakatni qulflash</string>
+    <string name="customctrl_absolute_tracking">Barmoqni mutlaq kuzatish</string>
+    <string name="memory_warning_msg">Hozirgi boʻsh RAM hajmi (%d) ajratilgan RAM (%d) dan kam, bu oʻyinning ishdan chiqishiga olib kelishi mumkin. Oʻyin yopilib qolsa, ajratilgan xotirani kamaytiring.</string>
+    <string name="address_memory_warning_msg">Hozirgi boʻsh adreslanadigan RAM hajmi (%d) ajratilgan RAM (%d) dan kam, bu oʻyinning ishdan chiqishiga olib keladi. Oʻyin yopilib qolsa, ajratilgan xotirani kamaytiring.</string>
+    <string name="mcl_memory_allocation">Xotira ajratish</string>
+    <string name="mcl_memory_allocation_subtitle">Minecraftga qancha xotira berilishini belgilaydi.</string>
+    <string name="multirt_runtime_corrupt">Java Runtime buzilgan</string>
+    <string name="multirt_runtime_incompatiblearch">Mos kelmaydigan arxitektura: %s</string>
+    <string name="multirt_config_title">Java Runtimelar</string>
+    <string name="multirt_config_add">Yangi qoʻshish</string>
+    <string name="multirt_title">Runtime menejeri</string>
+    <string name="multirt_subtitle">Oʻrnatilgan Java Runtimelarni boshqarish.</string>
+    <string name="multirt_progress_caching">Keshlanmoqda...</string>
+    <string name="multirt_config_setdefault">Standart qilish</string>
+    <string name="multirt_config_setdefault_already">Standart</string>
+    <string name="multirt_config_removeerror_last">Kamida bitta Java Runtime oʻrnatilgan boʻlishi kerak.</string>
+    <string name="multirt_nocompatiblert">Mos Java Runtime topilmadi. Bu versiya uchun Java %d yoki undan yangisi kerak.</string>
+    <string name="multirt_nojava8rt">Java 8 topilmadi. Bu imkoniyatdan foydalanish uchun Java 8 ni oʻrnatishingiz kerak.</string>
+    <string name="multirt_delete_runtime">Runtimeni oʻchirish</string>
+    <string name="pvc_gameDirectory">Oʻyin papkasi</string>
+    <string name="pvc_jvmArgs">JVM argumentlari</string>
+
+    <string name="preference_mouse_start_title">Virtual sichqoncha yoqilgan holda boshlash</string>
+    <string name="preference_mouse_start_description">Bu sozlama yoqilsa, virtual sichqoncha ishga tushganda paydo boʻladi.</string>
+    <string name="preference_video_title">Video va renderer</string>
+    <string name="preference_video_description">Ruxsat, renderer va unumdorlik</string>
+    <string name="preference_control_title">Boshqaruvni sozlash</string>
+    <string name="preference_control_description">Imo-ishoralar, tugmalar va oʻlcham</string>
+    <string name="preference_java_title">Java sozlamalari</string>
+    <string name="preference_java_description">Java Runtimelar, JVM argumentlari, RAM hajmi va sandbox</string>
+    <string name="preference_misc_title">Boshqa sozlamalar</string>
+    <string name="preference_misc_description">Versiyalar roʻyxati va kutubxonalarni tekshirish</string>
+    <string name="preference_experimental_description">Ehtiyotkorlik bilan foydalaning, yordam koʻrsatilmaydi</string>
+    <string name="preference_sustained_performance_title">Barqaror unumdorlik rejimini yoqish</string>
+    <string name="preference_sustained_performance_description">Eng yuqori unumdorlikni cheklash orqali qizib ketish sababli sekinlashishni kamaytiradi.</string>
+    <string name="preference_force_vsync_title">VSync ni majburan yoqish</string>
+    <string name="preference_force_vsync_description">Eng yuqori unumdorlikni cheklash orqali qizib ketish sababli sekinlashishni kamaytiradi.</string>
+    <string name="preference_force_english_title">Tilni majburan inglizcha qilish</string>
+    <string name="preference_force_english_description">Dasturchilar yozgan asl matnlarni koʻrish imkonini beradi. Qayta ishga tushirish talab qilinadi.</string>
+    <string name="preference_edit_controls_title">Boshqaruv tugmalarini tahrirlash</string>
+    <string name="preference_edit_controls_summary">Boshqaruv sxemasini oʻzingizga moslang.</string>
+
+    <string name="preference_category_gyro_controls">Giroskop boshqaruvi</string>
+    <string name="preference_category_virtual_mouse">Virtual sichqoncha</string>
+
+    <string name="preference_gyro_invert_x_axis">X oʻqini teskari qilish</string>
+    <string name="preference_gyro_invert_y_axis">Y oʻqini teskari qilish</string>
+    <string name="preference_gyro_invert_x_axis_description">Gorizontal oʻqni teskari qiladi.</string>
+    <string name="preference_gyro_invert_y_axis_description">Vertikal oʻqni teskari qiladi.</string>
+    <string name="preference_gyro_smoothing_title">Giroskop silliqlashni yoqish</string>
+    <string name="preference_gyro_smoothing_description">Kechikish evaziga titrashni kamaytiradi.</string>
+
+    <string name="preference_back_title">Oldingi ekranga qaytish</string>
+    <string name="unnamed">Nomsiz</string>
+    <string name="profiles_latest_snapshot">Soʻnggi snapshot</string>
+    <string name="profiles_latest_release">Soʻnggi reliz</string>
+    <string name="profiles_profile_name">Nomi</string>
+    <string name="profiles_profile_version">Versiya</string>
+    <string name="global_delete">Oʻchirish</string>
+    <string name="pedit_java_runtime">Java Runtime</string>
+    <string name="pedit_renderer">Renderer</string>
+    <string name="arc_capes_title">Cosmetica plashlari</string>
+    <string name="arc_capes_desc">Cosmetica (avvalgi Arc) plashlarini yoqadi. Batafsil maʼlumot: https://cosmetica.cc. OptiFine talab qilinadi.</string>
+    <string name="notif_channel_name">Umumiy</string>
+    <string name="lazy_service_default_title">MC Mobile fon xizmati</string>
+    <string name="mcl_setting_veroption_installed">Oʻrnatilgan</string>
+    <string name="use_global_default">(Umumiy standartdan foydalanish)</string>
+    <string name="default_control">Standart boshqaruv sxemasi</string>
+    <string name="progresslayout_tasks_in_progress">%d ta vazifa bajarilmoqda</string>
+    <string name="notification_terminate">Toʻxtatish</string>
+    <string name="notification_game_runs">Oʻyin ishlamoqda!</string>
+    <string name="folder_dialog_create">Yaratish</string>
+    <string name="folder_dialog_insert_name">Papka nomini kiriting</string>
+    <string name="folder_fragment_create">Papka yaratish</string>
+    <string name="folder_fragment_select">Papkani tanlash</string>
+    <string name="main_login_done">Kirish bajarildi</string>
+    <string name="main_add_account">Akkaunt qoʻshish</string>
+    <string name="tasks_ongoing">Vazifalar bajarilmoqda, iltimos kuting</string>
+    <string name="no_saved_accounts">Saqlangan akkauntlar yoʻq</string>
+    <string name="mc_download_failed">Minecraftni yuklab olib boʻlmadi! Sababi yomon internet aloqasi, fayllarning notoʻgʻri joylashuvi, Minecraftni lokal akkauntdan yuklab olishga urinish va hokazo boʻlishi mumkin.</string>
+    <string name="xerr_unknown">Nomaʼlum Xbox Live API xatosi %d</string>
+    <string name="xerr_no_account">Sizda Xbox Live akkaunti yoʻqqa oʻxshaydi. Iltimos, https://minecraft.net/ saytiga bir marta kiring va qayta urinib koʻring.</string>
+    <string name="xerr_adult_verification">Akkauntingizni katta yoshli shaxs tasdiqlashi kerak.</string>
+    <string name="xerr_child">Akkauntingiz bola akkaunti. Kirish uchun u oilaga (Family) qoʻshilishi kerak.</string>
+    <string name="minecraft_not_owned">Bu akkauntda Minecraft profili yoʻqqa oʻxshaydi. Agar sizda Xbox Game Pass boʻlsa, https://minecraft.net/ saytiga kirib, profilni sozlang.</string>
+    <string name="xerr_not_available">Xbox Live sizning mamlakatingizda mavjud emas</string>
+    <string name="preference_enable_gyro_title">Giroskop boshqaruvini yoqish</string>
+    <string name="preference_enable_gyro_description">Yoqilsa, telefonni burish orqali oʻyinda atrofga qarashingiz mumkin.</string>
+    <string name="preference_gyro_sensitivity_title">Giroskop sezgirligi</string>
+    <string name="preference_gyro_sensitivity_description">Giroskop boshqaruvi sezgirligini sozlang.</string>
+    <string name="toast_turn_on_gyro">Buning uchun avval giroskop boshqaruvini yoqing!</string>
+    <string name="preference_gyro_sample_rate_title">Giroskop oʻlchash chastotasi</string>
+    <string name="preference_gyro_sample_rate_description">Giroskop boshqaruvida unumdorlik muammolari boʻlsa, buni oshiring.</string>
+    <string name="microsoft_login_retry_later">Soʻrovlar juda koʻp, keyinroq qayta urinib koʻring.</string>
+    <string name="storage_required">MC Mobile uchun tashqi xotira ulangan boʻlishi kerak. Iltimos, uni qayta ulang va ilovani qayta ishga tushiring.</string>
+    <string name="mcl_setting_title_buttonallcaps">Tugma yozuvlarida faqat bosh harflardan foydalanish</string>
+    <string name="mcl_setting_subtitle_buttonallcaps">Boshqaruv tugmalarida kichik harflardan foydalanmoqchi boʻlsangiz, buni oʻchiring.</string>
+    <string name="create_profile">Yangi profil yaratish</string>
+    <string name="preference_shader_dump_title">Shaderlarni saqlashni yoqish</string>
+    <string name="preference_shader_dump_description">Oʻgirilgan shaderlarni log fayliga yozadi.</string>
+    <string name="millisecond_format">%d ms</string>
+    <string name="customctrl_editor_exit_title">Chiqyapsizmi?</string>
+    <string name="customctrl_editor_exit_msg">Haqiqatan ham chiqmoqchimisiz?</string>
+    <string name="customctrl_editor_exit">Muharrirdan chiqish</string>
+    <string name="global_save_and_exit">Saqlash va chiqish</string>
+    <string name="global_yes">Ha</string>
+    <string name="global_no">Yoʻq</string>
+
+    <string name="preference_controller_map_wiped">Kontroller sozlamalari tozalandi.</string>
+    <string name="preference_category_controller_settings">Kontroller sozlamalari</string>
+    <string name="preference_wipe_controller_title">Kontroller tugmalarini tiklash</string>
+    <string name="preference_wipe_controller_description">Kontroller tugmalarini qaytadan sozlash imkonini beradi.</string>
+    <string name="preference_deadzone_scale_title">Joystik oʻlik zonasi</string>
+    <string name="preference_deadzone_scale_description">Joystik oʻz-oʻzidan siljisa, buni oshiring.</string>
+
+    <string name="preference_force_big_core_title">Rendererni katta yadroda ishlashga majburlash</string>
+    <string name="preference_force_big_core_desc">Minecraft render oqimini eng yuqori chastotali protsessor yadrosida ishlashga majbur qiladi.</string>
+    <string name="version_select_hint">Versiyani tanlang</string>
+    <string name="forge_dl_progress">%s uchun oʻrnatuvchi yuklab olinmoqda</string>
+    <string name="forge_dl_searching">Forge versiya raqami qidirilmoqda</string>
+    <string name="neoforge_dl_searching">NeoForge versiya raqami qidirilmoqda</string>
+    <string name="modloader_dl_failed_to_load_list">Versiyalar roʻyxatini yuklab boʻlmadi!</string>
+    <string name="forge_dl_no_installer">Kechirasiz, Forge ning bu versiyasida oʻrnatuvchi yoʻq, bu hozircha qoʻllab-quvvatlanmaydi.</string>
+    <string name="forge_dl_select_version">Forge versiyasini tanlang</string>
+    <string name="fabric_dl_progress">%s loader metamaʼlumotlari yuklab olinmoqda</string>
+    <string name="fabric_dl_loader_version">%s loader versiyasi</string>
+    <string name="fabric_dl_game_version">Minecraft versiyasi</string>
+    <string name="fabric_dl_install">Oʻrnatish</string>
+    <string name="fabric_dl_cant_read_meta">%s loader metamaʼlumotlarini oʻqib boʻlmadi. Keyinroq qayta urinib koʻring.</string>
+    <string name="modloader_dl_install_fabric">Fabric profilini yaratish</string>
+    <string name="modloader_dl_install_quilt">Quilt profilini yaratish</string>
+    <string name="modloader_dl_install_forge">Forge profilini yaratish</string>
+    <string name="create_profile_vanilla">Vanilla profilini yaratish</string>
+    <string name="create_profile_vanilla_like_versions">Vanillaga oʻxshash versiyalar</string>
+    <string name="create_profile_modded_versions">Modli versiyalar</string>
+    <string name="fabric_dl_loader_title">Versiyalarni tanlang</string>
+    <string name="of_dl_select_version">OptiFine versiyasini tanlang</string>
+    <string name="of_dl_failed_to_scrape">OptiFine oʻrnatish uchun maʼlumot toʻplab boʻlmadi</string>
+    <string name="of_dl_progress">%s yuklab olinmoqda</string>
+    <string name="create_profile_optifine">OptiFine profilini yaratish</string>
+
+    <string name="hint_search_modpack">Modpaklarni qidirish</string>
+
+    <string name="preference_vulkan_driver_system_title">Tizim Vulkan drayveridan foydalanish</string>
+    <string name="preference_vulkan_driver_system_description">Adreno GPU larda Turnip oʻrniga tizim Vulkan drayveridan foydalanishga majbur qiladi. Faqat Zink va Vulkan ishlatadigan modlarga taʼsir qiladi.</string>
+
+    <string name="generic_install">Oʻrnatish</string>
+    <string name="generic_apply">Qoʻllash</string>
+    <string name="generic_debug">Debug</string>
+
+    <string name="search_modpack_no_result">Modpaklar topilmadi</string>
+    <string name="search_modpack_error">Modpaklarni qidirib boʻlmadi</string>
+    <string name="search_modpack_download_error">Modpak metamaʼlumotlarini yuklab boʻlmadi</string>
+
+    <string name="modpack_download_downloading_metadata">Modpak metamaʼlumotlari yuklab olinmoqda (%.2f MB / %.2f MB)</string>
+    <string name="modpack_download_downloading_mods">Modlar yuklab olinmoqda (%.2f MB / %.2f MB)</string>
+    <string name="modpack_download_downloading_mods_fc">Modlar yuklab olinmoqda (%d / %d fayl)</string>
+    <string name="modpack_download_applying_overrides">Oʻzgartirishlar qoʻllanmoqda (%d/%d)</string>
+    <string name="modpack_install_notification_title">MC Mobile modpak oʻrnatuvchisi</string>
+    <string name="modpack_install_notification_success">Modpak oʻrnatishni yakunlash uchun shu yerni bosing</string>
+    <string name="modpack_install_notification_data_not_available">Mod loader maʼlumotlarini yuklab boʻlmadi</string>
+    <string name="modpack_install_modloader_download_failed">Mod loader fayllarini yuklab boʻlmadi</string>
+    <string name="modpack_install_download_failed">Modpak fayllarini yuklab boʻlmadi</string>
+    <string name="modpack_install_button">Modpak profilini yaratish</string>
+
+    <string name="notif_error_occured">Xatolik yuz berdi</string>
+    <string name="notif_error_occured_desc">Batafsil koʻrish uchun bosing</string>
+    <string name="fabric_dl_only_stable">Faqat barqaror versiyalarni koʻrsatish</string>
+    <string name="dl_tampered_manifest_title">Faylni tekshirish ogohlantirishi</string>
+    <string name="dl_tampered_manifest"><![CDATA[Mirror dagi oʻyin versiyalari manifesti rasmiy Mojang manifestiga mos kelmaydi, demak u oʻzgartirilgan boʻlishi mumkin.<br/>
+        <b>Bu xavfsiz emas. Davom etsangiz, shaxsiy maʼlumotlaringiz xavf ostida qolishi mumkin.</b><br/>
+        Agar baribir mirrordan foydalanmoqchi boʻlsangiz, \"Manifest tekshiruvini oʻchirish\" tugmasini bosing va yuklab olishni qaytadan boshlang.<br/>
+        Rasmiy manbadan yuklab olmoqchi boʻlsangiz, \"Rasmiy saytga oʻtish\" tugmasini bosing va yuklab olishni qaytadan boshlang.<br/>]]>
+    </string>
+    <string name="dl_turn_off_manifest_checks">Manifest tekshiruvini oʻchirish</string>
+    <string name="dl_switch_to_official_site">Rasmiy saytga oʻtish</string>
+    <string name="preference_download_source_title">Oʻyinni yuklab olish manbasi</string>
+    <string name="preference_download_source_description">Rasmiy server oʻrniga yuklab olish mirrorini tanlang</string>
+    <string name="preference_verify_manifest_title">Oʻyin versiyalari manifestini tekshirish</string>
+    <string name="preference_verify_manifest_description">Yoqilsa, launcher kutubxonalar bilan birga oʻyin versiyalari manifestini ham tekshiradi.</string>
+    <string name="notif_download_finished">Oʻyin ishga tushirishga tayyor</string>
+    <string name="notif_download_finished_desc">Boshlash uchun shu yerni bosing!</string>
+    <string name="preference_category_gestures">Imo-ishoralar</string>
+    <string name="preference_category_buttons">Tugmalar</string>
+    <string name="preference_category_experimental_settings">Tajribaviy sozlamalar</string>
+    <string name="preference_category_java_tweaks">Java sozlamalari</string>
+    <string name="preference_category_main_categories">Boʻlimlar</string>
+    <string name="preference_category_miscellaneous">Boshqa sozlamalar</string>
+    <string name="preference_category_video">Video sozlamalari</string>
+    <string name="notification_permission_dialog_title">Ruxsat soʻrovi</string>
+    <string name="notification_permission_dialog_text">Ilovadan chiqqaningizda oʻyin/modpak yuklab olish toʻxtab qolmasligi uchun MC Mobile ga bildirishnoma yuborish ruxsati kerak. Bu ruxsatsiz Android ilova fonga oʻtganda yuklab olishni toʻxtatib qoʻyishi mumkin.</string>
+    <string name="notification_permission_toast">Fikringizni keyinroq Sozlamalar orqali oʻzgartirishingiz mumkin</string>
+    <string name="preference_ask_for_notification_title">Bildirishnomalarga ruxsat berish</string>
+    <string name="preference_ask_for_notification_description">Bildirishnoma ruxsatini qayta soʻrash uchun bosing. Bu oʻyin/modpaklarni fonda toʻgʻri yuklab olish uchun kerak.</string>
+    <string name="preference_vsync_in_zink_title">Zink bilan V-Sync ga ruxsat berish</string>
+    <string name="preference_vsync_in_zink_description">Zink uchun V-Sync ni yoqishda launcherga ichki tizim API laridan foydalanishga ruxsat beradi. Tizim yangilanganidan keyin launcher Zink bilan toʻsatdan yopilib qolsa, buni oʻchiring.</string>
+    <string name="exception_failed_to_unpack_jre17">JRE 17 ni oʻrnatib boʻlmadi</string>
+    <string name="newdl_starting">Oʻyin metamaʼlumotlari oʻqilmoqda…</string>
+    <string name="newdl_downloading_jre_runtime">Java %s runtime yuklab olinmoqda (%.2f/%.2f MB)</string>
+    <string name="newdl_downloading_metadata">Oʻyin metamaʼlumotlari yuklab olinmoqda (%s)</string>
+    <string name="newdl_downloading_game_files">Oʻyin yuklab olinmoqda… (%d/%d, %.2f MB/s)</string>
+    <string name="newdl_downloading_game_files_size">Oʻyin yuklab olinmoqda… (%.2f/%.2f MB, %.2f MB/s)</string>
+    <string name="cropper_title">Rasm qismini tanlang</string>
+    <string name="cropper_lock_vertical">V. qulf</string>
+    <string name="cropper_lock_horizontal">G. qulf</string>
+    <string name="cropper_reset">Tiklash</string>
+    <string name="cropper_select_cancelled">Tanlash bekor qilindi</string>
+    <string name="log_view_button_scroll_off">Avtoaylantirish\nOʻCHIQ</string>
+    <string name="log_view_button_scroll_on">Avtoaylantirish\nYOQIQ</string>
+    <string name="log_view_button_output_off">Chiqish\nOʻCHIQ</string>
+    <string name="log_view_button_output_on">Chiqish\nYOQIQ</string>
+    <string name="log_view_label_log_output">Log chiqishi:</string>
+    <string name="execute_jar_failed_to_read_file">.jar faylini oʻqib boʻlmadi</string>
+    <string name="controller_button_trigger_left">Chap trigger</string>
+    <string name="controller_button_trigger_right">Oʻng trigger</string>
+    <string name="controller_button_shoulder_left">Chap yelka tugmasi</string>
+    <string name="controller_button_shoulder_right">Oʻng yelka tugmasi</string>
+    <string name="controller_direction_forward">Stik yuqoriga</string>
+    <string name="controller_direction_backward">Stik pastga</string>
+    <string name="controller_direction_left">Stik chapga</string>
+    <string name="controller_direction_right">Stik oʻngga</string>
+    <string name="controller_stick_press_l">Chap stik (bosish)</string>
+    <string name="controller_stick_press_r">Oʻng stik (bosish)</string>
+    <string name="controller_dpad_up">D-Pad yuqoriga</string>
+    <string name="controller_dpad_down">D-Pad pastga</string>
+    <string name="controller_dpad_left">D-Pad chapga</string>
+    <string name="controller_dpad_right">D-Pad oʻngga</string>
+    <string name="controller_remapper_exit_part1">Chiqish uchun</string>
+    <string name="controller_remapper_exit_part2">ni ushlab turing</string>
+    <string name="controller_remapper_operating_mode">Joriy rejim</string>
+    <string name="customctrl_visibility_title">Koʻrinish</string>
+    <string name="customctrl_visibility_ingame">Oʻyin ichida</string>
+    <string name="customctrl_visibility_in_menus">Menyularda</string>
+    <string name="controller_remapper_expand_entry">Tugma kodlarini oʻzgartirish uchun kengaytiring</string>
+    <string name="preference_remap_controller_title">Kontroller tugmalarini qayta belgilash</string>
+    <string name="preference_remap_controller_description">Har bir kontroller tugmasiga biriktirilgan klaviatura tugmalarini oʻzgartirish imkonini beradi</string>
+    <string name="ltw_render_distance_warning_msg">Sizning GPU ingiz Sodium yoki shunga oʻxshash modlarsiz 7 dan yuqori koʻrish masofasini chiza olmaydi. \"OK\" bosilganda koʻrish masofasi avtomatik kamaytiriladi.</string>
+    <string name="mcl_button_open_directory">Oʻyin papkasini ochish</string>
+    <string name="local_login_bad_username_title">Yaroqsiz foydalanuvchi nomi</string>
+    <string name="local_login_bad_username_text">Foydalanuvchi nomi 3–16 belgidan iborat boʻlishi va faqat lotin harflari, 0–9 raqamlari hamda pastki chiziqdan tashkil topishi kerak.</string>
+    <string name="quick_setting_title">Tezkor sozlamalar</string>
+    <string name="create_bta_profile">\"Better than Adventure!\" profilini yaratish</string>
+    <string name="select_bta_version">\"Better than Adventure!\" versiyasini tanlang</string>
+    <string name="bta_installer_available_versions">Qoʻllab-quvvatlanadigan BTA versiyalari</string>
+    <string name="bta_installer_untested_versions">Sinovdan oʻtmagan BTA versiyalari</string>
+    <string name="bta_installer_nightly_versions">Kunlik (nightly) BTA versiyalari</string>
+    <string name="newdl_extracting_native_libraries">Native kutubxonalar ochilmoqda (%d/%d)</string>
+    <string name="toast_not_available_demo">Bu demo rejimida mavjud emas</string>
+
+    <string name="preference_renderer_mobileglues_settings">MobileGlues renderer sozlamalari</string>
+    <string name="mg_renderer_glsl_cache">GLSL keshining maksimal hajmi</string>
+    <string name="mg_renderer_angle">Drayver sifatida ANGLE dan foydalanish</string>
+    <string name="mg_renderer_title_errorSetting">Xatolarni filtrlash</string>
+    <string name="mg_renderer_title_timerQueryExt">F3 menyusida GPU yuklamasini oʻchirish</string>
+    <string name="mg_renderer_summary_timerQueryExt">Baʼzi Mali qurilmalarida F3 ochiq turganda tasodifiy yopilib qolishni tuzatadi</string>
+    <string name="preference_ANGLE_only">Faqat ANGLE uchun sozlamalar</string>
+    <string name="mg_renderer_title_angleDepthClearFixMode">Qoʻl va ushlangan buyumlarning bloklar ichidan koʻrinishini tuzatish</string>
+    <string name="mg_renderer_summary_angleDepthClearFixMode">Faqat ANGLE ga taʼsir qiladi, unumdorlikka taʼsir qilishi mumkin.</string>
+    <string name="preference_experimental_title">Tajribaviy imkoniyatlar</string>
+    <string name="mg_renderer_title_gl43exts">Tajribaviy OpenGL 4.3 kengaytmalarini eʼlon qilish</string>
+    <string name="mg_renderer_summary_gl43exts">Modlar sababli yopilib qolishda yordam berishi mumkin. Kerak boʻlmasa oʻchiring, yopilib qolishga sabab boʻlishi mumkin.</string>
+    <string name="mg_renderer_title_computeShaderext">Tajribaviy Compute Shader kengaytmasini eʼlon qilish</string>
+    <string name="mg_renderer_summary_computeShaderext">Shaderpak nosozliklarida yordam berishi mumkin. Kerak boʻlmasa oʻchiring, yopilib qolishga sabab boʻlishi mumkin.</string>
+    <string name="demo_versions_supported">Demo akkauntlarda faqat Vanilla 1.3.1 va undan yuqori versiyalar qoʻllab-quvvatlanadi</string>
+    <string name="demo_unsupported">Demo profil qoʻllab-quvvatlanmaydi</string>
+    <string name="change_account">Bu funksiyadan foydalanish uchun akkauntni almashtiring</string>
+    <string name="no_minecraft_account_found">Minecraft akkaunti topilmadi</string>
+    <string name="feature_requires_java_account">Bu funksiya uchun Minecraft Java Edition sotib olingan Microsoft akkaunti kerak.</string>
+    <string name="delete_account_and_login">Akkauntni oʻchirib, qayta kirish</string>
+    <string name="login_again">Iltimos, qaytadan kiring</string>
+    <string name="account_corrupted">Tanlangan akkaunt buzilgan</string>
+    <string name="modloader_dl_install_neoforge">NeoForge profilini yaratish</string>
+    <string name="neoforge_dl_select_version">NeoForge versiyasini tanlang</string>
+    <string name="neoforge_dl_no_installer">Kechirasiz, NeoForge ning bu versiyasida oʻrnatuvchi yoʻq, bu hozircha qoʻllab-quvvatlanmaydi.</string>
+
+    <string name="preference_category_touchcontroller_settings">TouchController sozlamalari</string>
+    <string name="preference_force_enable_touchcontroller_title">TouchController ni majburan yoqish</string>
+    <string name="preference_force_enable_touchcontroller_description">Mod fayli topilmasa ham TouchController integratsiyasini majburan yoqadi.</string>
+    <string name="preference_touchcontroller_vibrate_length_title">TouchController tebranish davomiyligi</string>
+    <string name="preference_touchcontroller_vibrate_length_description">TouchController ishlatilganda tebranish davomiyligini belgilaydi.</string>
+    <string name="error_vanilla_json_corrupt">Vanilla json fayli buzilganga oʻxshaydi. Iltimos, xato haqida xabar bering.</string>
+    <string name="preference_ask_for_microphone_title">Mikrofonga ruxsat berish</string>
+    <string name="preference_ask_for_microphone_description">Mikrofon ruxsatini qayta soʻrash uchun bosing. Simple Voice Chat kabi ovozli chat modlari uchun kerak.</string>
+    <string name="mcl_gamepad_forcedSDL_subtitle">Agar 26.3-snapshot-4 va undan yuqori versiyalar yoki kontroller modlari toʻgʻri ishlamasa, bu yordam berishi mumkin.</string>
+    <string name="mcl_gamepad_forcedSDL">SDL kontroller boshqaruvini majburan ishga tushirish</string>
+    <string name="preference_category_SDL_settings">SDL sozlamalari</string>
+    <string name="oldL4JFound">Siz Android tuzatishlarisiz Legacy4J versiyasidan foydalanmoqdasiz! Eng yaxshi tajriba uchun kontroller sozlamalarida SDL ni qoʻlda yoqishingiz kerak!</string>
+    <string name="global_warning">Ogohlantirish!</string>
+    <string name="controllableFound">Controllable modi hozircha ishga tushishda tasodifan yopilib qolishi mumkin. Qayta-qayta urinib koʻring yoki Controlify kabi boshqa moddan foydalaning.</string>
+    <string name="mg_renderer_title_dsaExt">Tajribaviy Direct State Access kengaytmasini eʼlon qilish</string>
+    <string name="mg_renderer_summary_dsaExt">Iris shaderpaklarida yordam berishi mumkin, AcceleratedRendering modi uchun talab qilinadi</string>
+    <string name="mg_renderer_title_fsr">AMD FSR 1 masshtablash</string>
+    <string name="autorendererselectfailed">Rendererni avtomatik tanlab boʻlmadi, HolyGL4ES ishlatiladi</string>
+    <string name="sodium_warning_title">Sodium aniqlandi!</string>
+    <string name="sodium_warning_message">Siz Sodium dan foydalanayotganga oʻxshaysiz. U qoʻllab-quvvatlanmaydi va grafik nosozliklar yoki yopilib qolishga olib kelishi mumkin. Iltimos, uni va unga bogʻliq barcha modlarni olib tashlang.</string>
+    <string name="delete_sodium">Sodium ni oʻchirib, ishga tushirish</string>
+    <string name="sodium_override_title">Sodium ni majburan ishga tushirish</string>
+    <string name="sodium_override_summaryOff">Sodium vizual xatolar va yopilib qolishga sabab boʻlishi mumkin. Sizni ogohlantirdik.</string>
+    <string name="sodium_override_summaryOn">Sodium qoʻllab-quvvatlanmaydi. Muammo yuz bersa, yordam berilmaydi.</string>
+    <string name="not_modpack_file">Bu modpak fayli emas!</string>
+    <string name="global_not_installed">Oʻrnatilmagan</string>
+    <string name="global_download">Yuklab olish</string>
+    <string name="multirt_no_internet">Yuklab boʻlmadi, internet aloqangizni tekshiring.</string>
+    <string name="global_installing">Oʻrnatilmoqda…</string>
+    <string name="error_key_unsupported">Xato! Bu tugmaga biriktirilgan klavish yaroqsiz. Ilovani yangilab koʻrdingizmi?</string>
+    <string name="error_invalid_value">Xato! Yaroqsiz qiymat!</string>
+    <string name="minecraft_no_username_set">Minecraft foydalanuvchi nomingiz oʻrnatilmagan! Kirishdan oldin uni Minecraft saytida oʻrnatishingiz kerak!</string>
+    <string name="create_lwjgl3ify_profile">LWJGL3ify profilini yaratish</string>
+    <string name="select_lwjgl3ify_version">LWJGL3ify versiyasini tanlang</string>
+    <string name="lwjgl3ify_installer_available_versions">Qoʻllab-quvvatlanadigan LWJGL3ify versiyalari</string>
+    <string name="lwjgl3ify_installer_broken_versions">Nosoz LWJGL3ify versiyalari (SDL)</string>
+    <string name="new_default_controls">Yangi standart boshqaruv new_default.json fayliga chiqarildi. Sinab koʻring!</string>
+    <string name="import_modpack_start">Modpak import qilinmoqda…</string>
+    <string name="import_modpack_hash">Modpak fayli xeshlanmoqda… (%s MB / %s MB)</string>
+    <string name="import_modpack_json">Modpak maʼlumotlari oʻqilmoqda…</string>
+    <string name="import_modpack_copy">Modpak fayli keshga nusxalanmoqda… (%s MB / %s MB)</string>
+    <string name="angelica_found_sfpew_notice">Angelica modi topildi, Simple FPE Wrapper kerak emas</string>
+    <string name="use_angle_checkbox">ANGLE dan foydalanish (FPS ni oshirishi mumkin)</string>
+
+</resources>
