@@ -36,6 +36,7 @@ import net.kdt.pojavlaunch.contracts.OpenDocumentWithExtension;
 import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
 import net.kdt.pojavlaunch.extra.ExtraListener;
+import net.kdt.pojavlaunch.accounts.LauncherProfileManager;
 import net.kdt.pojavlaunch.fragments.MainMenuFragment;
 import net.kdt.pojavlaunch.fragments.MicrosoftLoginFragment;
 import net.kdt.pojavlaunch.fragments.SelectAuthFragment;
@@ -286,6 +287,16 @@ public class LauncherActivity extends BaseActivity {
         return false;
     }
 
+    private static final String PREF_WELCOME_SHOWN = "launcher_welcome_shown";
+
+    /** New users pick how to continue (Microsoft, offline or guest) once; going back skips it. */
+    private void showWelcomeOnFirstStart() {
+        if (LauncherPreferences.DEFAULT_PREF.getBoolean(PREF_WELCOME_SHOWN, false)) return;
+        LauncherPreferences.DEFAULT_PREF.edit().putBoolean(PREF_WELCOME_SHOWN, true).apply();
+        if (LauncherProfileManager.hasProfile() || !PojavProfile.getAllProfilesList().isEmpty()) return;
+        Tools.swapFragment(this, SelectAuthFragment.class, SelectAuthFragment.TAG, null);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -300,6 +311,7 @@ public class LauncherActivity extends BaseActivity {
                     .setReorderingAllowed(true)
                     .addToBackStack("ROOT")
                     .add(R.id.container_fragment, MainMenuFragment.class, null, "ROOT").commit();
+            showWelcomeOnFirstStart();
         }
 
 

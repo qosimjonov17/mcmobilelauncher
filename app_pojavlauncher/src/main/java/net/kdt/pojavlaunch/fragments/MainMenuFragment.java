@@ -88,11 +88,19 @@ public class MainMenuFragment extends Fragment {
         mShareLogsButton.setOnClickListener((v) -> shareLog(requireContext()));
 
         mOpenDirectoryButton.setOnClickListener((v)-> {
-            if (Tools.isDemoProfile(v.getContext())){ // Say a different message when on demo profile since they might see the hidden demo folder
+            // The game folder only holds the user's own files (mods, worlds, resource packs), so it
+            // is open to every launcher user. The demo folder stays hidden from demo accounts.
+            if (Tools.isDemoProfile(v.getContext())){
                 hasNoOnlineProfileDialog(getActivity(), getString(R.string.demo_unsupported), getString(R.string.change_account));
-            } else if (!hasOnlineProfile()) { // Otherwise display the generic pop-up to log in
-                hasNoOnlineProfileDialog(requireActivity());
-            } else openPath(v.getContext(), getCurrentProfileDirectory(), false);
+            } else {
+                File gameDirectory = getCurrentProfileDirectory();
+                // A new user may not have downloaded anything yet
+                if (!gameDirectory.isDirectory() && !gameDirectory.mkdirs()) {
+                    Toast.makeText(v.getContext(), R.string.global_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                openPath(v.getContext(), gameDirectory, false);
+            }
 
         });
 

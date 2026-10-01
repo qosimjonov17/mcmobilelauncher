@@ -5,7 +5,6 @@ import static android.os.Build.VERSION_CODES.P;
 import static net.kdt.pojavlaunch.Architecture.archAsStringAndroid;
 import static net.kdt.pojavlaunch.Architecture.getDeviceArchitecture;
 import static net.kdt.pojavlaunch.PojavApplication.sExecutorService;
-import static net.kdt.pojavlaunch.PojavProfile.getAllProfiles;
 import static net.kdt.pojavlaunch.prefs.LauncherPreferences.PREF_IGNORE_NOTCH;
 import static net.kdt.pojavlaunch.prefs.LauncherPreferences.PREF_NOTCH_SIZE;
 
@@ -75,6 +74,7 @@ import net.kdt.pojavlaunch.utils.JSONUtils;
 import net.kdt.pojavlaunch.utils.MCOptionUtils;
 import net.kdt.pojavlaunch.utils.OldVersionsUtils;
 import net.kdt.pojavlaunch.value.DependentLibrary;
+import net.kdt.pojavlaunch.accounts.GameEntitlement;
 import net.kdt.pojavlaunch.value.MinecraftAccount;
 import net.kdt.pojavlaunch.value.MinecraftLibraryArtifact;
 import net.kdt.pojavlaunch.value.launcherprofiles.LauncherProfiles;
@@ -1832,22 +1832,16 @@ public final class Tools {
         return (info.isConnected());
     }
 
+    // Ownership checks live in GameEntitlement; these delegates keep existing call sites working.
     public static boolean isDemoProfile(Context ctx){
-        MinecraftAccount currentProfile = PojavProfile.getCurrentProfileContent(ctx, null);
-        return currentProfile != null && currentProfile.isDemo();
+        return GameEntitlement.isDemoSelected(ctx);
     }
 
     public static boolean isLocalProfile(Context ctx){
-        MinecraftAccount currentProfile = PojavProfile.getCurrentProfileContent(ctx, null);
-        return currentProfile == null || currentProfile.isLocal();
+        return GameEntitlement.isLocalSelected(ctx);
     }
     public static boolean hasOnlineProfile(){
-        for (MinecraftAccount accountToCheck : getAllProfiles()) {
-            if (!accountToCheck.isLocal() && !accountToCheck.isDemo()) {
-                return true;
-            }
-        }
-        return false;
+        return GameEntitlement.hasLicensedAccount();
     }
 
     public static void hasNoOnlineProfileDialog(Activity activity, @Nullable Runnable run, @Nullable String customTitle, @Nullable String customMessage){

@@ -1,55 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:background="@color/background_app"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:fillViewport="true"
     android:paddingHorizontal="@dimen/fragment_padding_medium">
 
-    <View
+    <LinearLayout
         android:id="@+id/login_menu"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@drawable/background_card"
-        android:translationZ="-1dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_25sdp"
+        android:paddingVertical="@dimen/_16sdp">
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- Minecraft accounts: what the game runs with. Ownership is verified by Microsoft. -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/auth_section_minecraft"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="@string/auth_section_minecraft_description" />
 
-    <com.kdt.mcgui.MineButton
-        android:id="@+id/button_microsoft_authentication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Microsoft Account"
-        android:textSize="@dimen/_12ssp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        app:layout_constraintBottom_toTopOf="@+id/button_local_authentication"
-        app:layout_constraintEnd_toEndOf="@+id/login_menu"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/login_menu"
-        app:layout_constraintTop_toTopOf="@id/login_menu"
-        app:layout_constraintVertical_chainStyle="packed"
-        />
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/button_microsoft_authentication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/auth_microsoft_account"
+            android:textSize="@dimen/_12ssp" />
 
-    <com.kdt.mcgui.MineButton
-        android:id="@+id/button_local_authentication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Local account"
-        android:textSize="@dimen/_12ssp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        app:layout_constraintBottom_toBottomOf="@id/login_menu"
-        app:layout_constraintEnd_toEndOf="@+id/login_menu"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/login_menu"
-        app:layout_constraintTop_toBottomOf="@+id/button_microsoft_authentication" />
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/button_local_authentication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/auth_local_account"
+            android:textSize="@dimen/_12ssp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Launcher profiles: who uses the launcher. Never grants access to the game. -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:text="@string/auth_section_launcher"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="@string/auth_section_launcher_description" />
+
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/button_guest_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/auth_guest_profile"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+</ScrollView>

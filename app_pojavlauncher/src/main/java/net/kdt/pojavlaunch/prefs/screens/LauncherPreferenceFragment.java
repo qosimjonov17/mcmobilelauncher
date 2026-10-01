@@ -13,6 +13,10 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import net.kdt.pojavlaunch.LauncherActivity;
 import net.kdt.pojavlaunch.R;
+import net.kdt.pojavlaunch.Tools;
+import net.kdt.pojavlaunch.accounts.LauncherProfile;
+import net.kdt.pojavlaunch.accounts.LauncherProfileManager;
+import net.kdt.pojavlaunch.fragments.GuestProfileFragment;
 import net.kdt.pojavlaunch.prefs.LauncherPreferences;
 
 /**
@@ -31,6 +35,20 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
     public void onCreatePreferences(Bundle b, String str) {
         addPreferencesFromResource(R.xml.pref_main);
         setupNotificationRequestPreference();
+        requirePreference("launcher_profile").setOnPreferenceClickListener(preference -> {
+            Tools.swapFragment(requireActivity(), GuestProfileFragment.class, GuestProfileFragment.TAG, null);
+            return true;
+        });
+    }
+
+    private void updateLauncherProfileSummary() {
+        // Sub-screens inherit onResume but do not contain this preference
+        Preference preference = findPreference("launcher_profile");
+        if (preference == null) return;
+        LauncherProfile profile = LauncherProfileManager.getCurrent();
+        preference.setSummary(profile == null
+                ? getString(R.string.launcher_profile_none)
+                : getString(R.string.launcher_profile_summary, profile.displayName));
     }
 
     private void setupNotificationRequestPreference() {
@@ -57,6 +75,7 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
     @Override
     public void onResume() {
         super.onResume();
+        updateLauncherProfileSummary();
         SharedPreferences sharedPreferences = getPreferenceManager().getSharedPreferences();
         if(sharedPreferences != null) sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }

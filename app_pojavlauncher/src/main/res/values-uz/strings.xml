@@ -473,4 +473,25 @@
     <string name="angelica_found_sfpew_notice">Angelica modi topildi, Simple FPE Wrapper kerak emas</string>
     <string name="use_angle_checkbox">ANGLE dan foydalanish (FPS ni oshirishi mumkin)</string>
 
+    <!-- Akkaunt tanlash: Minecraft akkauntlari va launcher profillari -->
+    <string name="auth_section_minecraft">Minecraft akkaunti</string>
+    <string name="auth_section_minecraft_description">Minecraft: Java Edition ni yuklab olish va oʻynash uchun kerak. Oʻyin sotib olinganini Microsoft tekshiradi.</string>
+    <string name="auth_microsoft_account">Microsoft akkaunti</string>
+    <string name="auth_local_account">Oflayn akkaunt (qurilmada litsenziyali akkaunt boʻlishi kerak)</string>
+    <string name="auth_section_launcher">Launcher profili</string>
+    <string name="auth_section_launcher_description">Launcher, uning sozlamalari, Java runtimelar va fayllaringizdan kirmasdan foydalaning. Launcher profili oʻyinni ochib bermaydi.</string>
+    <string name="auth_guest_profile">Mehmon sifatida davom etish</string>
+
+    <!-- Mehmon launcher profili -->
+    <string name="guest_profile_title">Mehmon profili</string>
+    <string name="guest_profile_description">Launcher uchun taxallus tanlang. Minecraft oʻynash uchun baribir oʻyin sotib olingan Microsoft akkaunti kerak boʻladi.</string>
+    <string name="guest_profile_nickname_hint">Taxallus</string>
+    <string name="guest_profile_continue">Davom etish</string>
+    <string name="guest_profile_bad_nickname_title">Yaroqsiz taxallus</string>
+    <string name="guest_profile_bad_nickname_text">Taxallus 2–24 belgidan iborat boʻlishi va harflar, raqamlar, boʻsh joy hamda _ . - belgilaridan tashkil topishi kerak.</string>
+    <string name="guest_profile_welcome">Xush kelibsiz, %1$s!</string>
+    <string name="launcher_profile_title">Launcher profili</string>
+    <string name="launcher_profile_none">Tanlanmagan. Mehmon sifatida davom etish uchun bosing.</string>
+    <string name="launcher_profile_summary">Mehmon: %1$s</string>
+
 </resources>

@@ -517,4 +517,25 @@
     <string name="angelica_found_sfpew_notice">Angelica mod found, Simple FPE Wrapper not needed</string>
     <string name="use_angle_checkbox">Use ANGLE (might help FPS)</string>
 
+    <!-- Account selection: Minecraft accounts vs launcher profiles -->
+    <string name="auth_section_minecraft">Minecraft account</string>
+    <string name="auth_section_minecraft_description">Needed to download and play Minecraft: Java Edition. Ownership is checked by Microsoft.</string>
+    <string name="auth_microsoft_account">Microsoft account</string>
+    <string name="auth_local_account">Offline account (needs a licensed account on this device)</string>
+    <string name="auth_section_launcher">Launcher profile</string>
+    <string name="auth_section_launcher_description">Use the launcher, its settings, Java runtimes and your files without signing in. A launcher profile does not unlock the game.</string>
+    <string name="auth_guest_profile">Continue as guest</string>
+
+    <!-- Guest launcher profile -->
+    <string name="guest_profile_title">Guest profile</string>
+    <string name="guest_profile_description">Choose a nickname for the launcher. To play Minecraft you will still need a Microsoft account that owns the game.</string>
+    <string name="guest_profile_nickname_hint">Nickname</string>
+    <string name="guest_profile_continue">Continue</string>
+    <string name="guest_profile_bad_nickname_title">Unsuitable nickname</string>
+    <string name="guest_profile_bad_nickname_text">The nickname must be 2–24 characters long and may contain letters, numbers, spaces and _ . -</string>
+    <string name="guest_profile_welcome">Welcome, %1$s!</string>
+    <string name="launcher_profile_title">Launcher profile</string>
+    <string name="launcher_profile_none">Not set. Tap to continue as a guest.</string>
+    <string name="launcher_profile_summary">Guest: %1$s</string>
+
 </resources>

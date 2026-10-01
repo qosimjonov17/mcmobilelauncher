@@ -24,8 +24,12 @@ public class SelectAuthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Button mMicrosoftButton = view.findViewById(R.id.button_microsoft_authentication);
         Button mLocalButton = view.findViewById(R.id.button_local_authentication);
+        Button mGuestButton = view.findViewById(R.id.button_guest_profile);
 
         mMicrosoftButton.setOnClickListener(v -> Tools.swapFragment(requireActivity(), MicrosoftLoginFragment.class, MicrosoftLoginFragment.TAG, null));
+        // Offline Minecraft accounts stay limited to devices that already hold a licensed account
         mLocalButton.setOnClickListener(v -> hasNoOnlineProfileDialog(requireActivity(), () -> Tools.swapFragment(requireActivity(), LocalLoginFragment.class, LocalLoginFragment.TAG, null)));
+        // A guest profile only names the launcher user, so it needs no Minecraft account
+        mGuestButton.setOnClickListener(v -> Tools.swapFragment(requireActivity(), GuestProfileFragment.class, GuestProfileFragment.TAG, null));
     }
 }
