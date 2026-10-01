@@ -1,4 +1,4 @@
-# MC Mobile Launcher
+# Mayoq Launcher
 
 Android telefonlarda **Minecraft: Java Edition** oʻynash uchun oʻzbekcha launcher.
 
@@ -20,9 +20,9 @@ Asl loyihaning README fayli: [UPSTREAM_README.md](UPSTREAM_README.md).
 
 | Fayl | Qaysi qurilma uchun |
 |---|---|
-| `mcmobile-arm64.apk` | Deyarli barcha zamonaviy telefonlar — **shuni tanlang** |
-| `mcmobile-armv7.apk` | Juda eski 32-bitli telefonlar |
-| `mcmobile-x86_64.apk` | Kompyuterdagi emulyatorlar (LDPlayer, BlueStacks, Android Studio) |
+| `mayoq-arm64.apk` | Deyarli barcha zamonaviy telefonlar — **shuni tanlang** |
+| `mayoq-armv7.apk` | Juda eski 32-bitli telefonlar |
+| `mayoq-x86_64.apk` | Kompyuterdagi emulyatorlar (LDPlayer, BlueStacks, Android Studio) |
 
 Java 8, 17 va 21 APK ichida keladi, shuning uchun oʻyin uchun faqat Minecraft fayllari internetdan yuklab olinadi.
 
@@ -32,7 +32,7 @@ Repozitoriyga har safar oʻzgarish yuborilganda GitHub APK faylni avtomatik yig�
 
 1. GitHub da repozitoriyni oching va **Actions** boʻlimiga oʻting.
 2. Eng yuqoridagi yashil ✅ belgili **Android CI** ishga tushirishini tanlang (yigʻish ~30–60 daqiqa davom etadi).
-3. Sahifa pastidagi **Artifacts** boʻlimidan qurilmangizga mos `mcmobile-...` faylini yuklab oling.
+3. Sahifa pastidagi **Artifacts** boʻlimidan qurilmangizga mos `mayoq-...` faylini yuklab oling.
    Agar roʻyxatda hech narsa boʻlmasa: chap tomondan **Android CI** ni tanlang → **Run workflow** → **Run workflow**.
 4. ZIP ichidagi `.apk` faylni telefonga oʻtkazib oʻrnating
    (Android “Nomaʼlum manbalardan oʻrnatish”ga ruxsat soʻraydi).
@@ -55,7 +55,7 @@ Tayyor APK: `app_pojavlauncher/build/outputs/apk/debug/`.
 |---|---|
 | `app_pojavlauncher/` | Asosiy Android ilova (Java + C) |
 | `app_pojavlauncher/src/main/res/values-uz/strings.xml` | Oʻzbekcha tarjima |
-| `app_pojavlauncher/build.gradle` | Ilova nomi, paket ID (`uz.mcmobile.launcher`), versiya |
+| `app_pojavlauncher/build.gradle` | Ilova nomi, paket ID (`uz.mayoq.launcher`), versiya |
 | `jre_lwjgl3glfw/` | Minecraft ishlatadigan LWJGL/GLFW ning Android versiyasi |
 | `.github/workflows/android.yml` | APK ni avtomatik yigʻuvchi GitHub Actions |
 

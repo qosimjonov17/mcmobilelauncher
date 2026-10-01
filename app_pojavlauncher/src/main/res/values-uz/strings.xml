@@ -15,7 +15,7 @@
     <string name="alerttitle_installmod">Mod oʻrnatuvchini tanlang</string>
 
     <!-- Error messages -->
-    <string name="error_fatal">MC Mobile kutilmaganda ishdan chiqdi</string>
+    <string name="error_fatal">Mayoq kutilmaganda ishdan chiqdi</string>
     <string name="error_no_version">Versiya yoʻq!</string>
     <string name="error_show_more">Koʻproq koʻrsatish</string>
     <string name="error_show_less">Kamroq koʻrsatish</string>
@@ -218,7 +218,7 @@
     <string name="arc_capes_title">Cosmetica plashlari</string>
     <string name="arc_capes_desc">Cosmetica (avvalgi Arc) plashlarini yoqadi. Batafsil maʼlumot: https://cosmetica.cc. OptiFine talab qilinadi.</string>
     <string name="notif_channel_name">Umumiy</string>
-    <string name="lazy_service_default_title">MC Mobile fon xizmati</string>
+    <string name="lazy_service_default_title">Mayoq fon xizmati</string>
     <string name="mcl_setting_veroption_installed">Oʻrnatilgan</string>
     <string name="use_global_default">(Umumiy standartdan foydalanish)</string>
     <string name="default_control">Standart boshqaruv sxemasi</string>
@@ -248,7 +248,7 @@
     <string name="preference_gyro_sample_rate_title">Giroskop oʻlchash chastotasi</string>
     <string name="preference_gyro_sample_rate_description">Giroskop boshqaruvida unumdorlik muammolari boʻlsa, buni oshiring.</string>
     <string name="microsoft_login_retry_later">Soʻrovlar juda koʻp, keyinroq qayta urinib koʻring.</string>
-    <string name="storage_required">MC Mobile uchun tashqi xotira ulangan boʻlishi kerak. Iltimos, uni qayta ulang va ilovani qayta ishga tushiring.</string>
+    <string name="storage_required">Mayoq uchun tashqi xotira ulangan boʻlishi kerak. Iltimos, uni qayta ulang va ilovani qayta ishga tushiring.</string>
     <string name="mcl_setting_title_buttonallcaps">Tugma yozuvlarida faqat bosh harflardan foydalanish</string>
     <string name="mcl_setting_subtitle_buttonallcaps">Boshqaruv tugmalarida kichik harflardan foydalanmoqchi boʻlsangiz, buni oʻchiring.</string>
     <string name="create_profile">Yangi profil yaratish</string>
@@ -312,7 +312,7 @@
     <string name="modpack_download_downloading_mods">Modlar yuklab olinmoqda (%.2f MB / %.2f MB)</string>
     <string name="modpack_download_downloading_mods_fc">Modlar yuklab olinmoqda (%d / %d fayl)</string>
     <string name="modpack_download_applying_overrides">Oʻzgartirishlar qoʻllanmoqda (%d/%d)</string>
-    <string name="modpack_install_notification_title">MC Mobile modpak oʻrnatuvchisi</string>
+    <string name="modpack_install_notification_title">Mayoq modpak oʻrnatuvchisi</string>
     <string name="modpack_install_notification_success">Modpak oʻrnatishni yakunlash uchun shu yerni bosing</string>
     <string name="modpack_install_notification_data_not_available">Mod loader maʼlumotlarini yuklab boʻlmadi</string>
     <string name="modpack_install_modloader_download_failed">Mod loader fayllarini yuklab boʻlmadi</string>
@@ -344,7 +344,7 @@
     <string name="preference_category_miscellaneous">Boshqa sozlamalar</string>
     <string name="preference_category_video">Video sozlamalari</string>
     <string name="notification_permission_dialog_title">Ruxsat soʻrovi</string>
-    <string name="notification_permission_dialog_text">Ilovadan chiqqaningizda oʻyin/modpak yuklab olish toʻxtab qolmasligi uchun MC Mobile ga bildirishnoma yuborish ruxsati kerak. Bu ruxsatsiz Android ilova fonga oʻtganda yuklab olishni toʻxtatib qoʻyishi mumkin.</string>
+    <string name="notification_permission_dialog_text">Ilovadan chiqqaningizda oʻyin/modpak yuklab olish toʻxtab qolmasligi uchun Mayoq ga bildirishnoma yuborish ruxsati kerak. Bu ruxsatsiz Android ilova fonga oʻtganda yuklab olishni toʻxtatib qoʻyishi mumkin.</string>
     <string name="notification_permission_toast">Fikringizni keyinroq Sozlamalar orqali oʻzgartirishingiz mumkin</string>
     <string name="preference_ask_for_notification_title">Bildirishnomalarga ruxsat berish</string>
     <string name="preference_ask_for_notification_description">Bildirishnoma ruxsatini qayta soʻrash uchun bosing. Bu oʻyin/modpaklarni fonda toʻgʻri yuklab olish uchun kerak.</string>

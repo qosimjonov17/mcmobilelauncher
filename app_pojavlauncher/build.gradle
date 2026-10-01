@@ -41,7 +41,7 @@ def getVersionName = {
             return ("LOCAL-" + "${getDate()}")
         }else {
             // Used by github actions
-            TAG_STRING =  'mcmobile-' + "${getDate()}" + "-" + TAG_PART_COMMIT.toString().trim()
+            TAG_STRING =  'mayoq-' + "${getDate()}" + "-" + TAG_PART_COMMIT.toString().trim()
         }
 
     }
@@ -100,7 +100,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "uz.mcmobile.launcher"
+        applicationId "uz.mayoq.launcher"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 10000000
@@ -126,11 +126,11 @@ android {
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.customDebug
-            resValue "string", "app_name", "MC Mobile (Debug)"
-            resValue "string", "app_short_name", "MC Mobile (Debug)"
-            resValue 'string', 'application_package', 'uz.mcmobile.launcher.debug'
-            resValue 'string', 'storageProviderAuthorities', 'uz.mcmobile.launcher.scoped.gamefolder.debug'
-            resValue 'string', 'shareProviderAuthority', 'uz.mcmobile.launcher.scoped.controlfolder.debug'
+            resValue "string", "app_name", "Mayoq (Debug)"
+            resValue "string", "app_short_name", "Mayoq (Debug)"
+            resValue 'string', 'application_package', 'uz.mayoq.launcher.debug'
+            resValue 'string', 'storageProviderAuthorities', 'uz.mayoq.launcher.scoped.gamefolder.debug'
+            resValue 'string', 'shareProviderAuthority', 'uz.mayoq.launcher.scoped.controlfolder.debug'
         }
         proguard {
             initWith debug
@@ -150,10 +150,10 @@ android {
             // defaultConfig already set
             // multiDexEnabled = true
             // debuggable = true
-            resValue "string", "app_name", "MC Mobile Launcher"
-            resValue "string", "app_short_name", "MC Mobile"
-            resValue 'string', 'storageProviderAuthorities', 'uz.mcmobile.launcher.scoped.gamefolder'
-            resValue 'string', 'application_package', 'uz.mcmobile.launcher'
+            resValue "string", "app_name", "Mayoq Launcher"
+            resValue "string", "app_short_name", "Mayoq"
+            resValue 'string', 'storageProviderAuthorities', 'uz.mayoq.launcher.scoped.gamefolder'
+            resValue 'string', 'application_package', 'uz.mayoq.launcher'
         }
         gplay {
             initWith release
