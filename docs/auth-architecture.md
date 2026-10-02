@@ -107,4 +107,8 @@ need their own Android OAuth client with the release key's SHA-1.
 Tests: `SyncSnapshotTest` checks the allowlist, typed round trips, tampered backups and file name
 validation. `LauncherIdentityStoreTest` covers migration, UUID stability, nickname validation and
 sign-out/re-sign-in; `GoogleIdentityClaimsTest` covers safe local parsing of provider metadata.
-CI runs them with `testDebugUnitTest`.
+CI runs them with `testDebugUnitTest`. On 2026-10-02, physical Android testing also confirmed
+Google Sign-In, selected-account display, nickname persistence across restart and sign-out/re-sign-in,
+Google account switching with separate local nicknames, and Google Drive backup/restore. These
+tests confirmed the launcher-only identity flow; they did not make a Mayoq identity a Minecraft
+account or change game-launch eligibility.

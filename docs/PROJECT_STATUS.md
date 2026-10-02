@@ -19,17 +19,32 @@ Fork of [Amethyst-Android](https://github.com/AngelAuraMC/Amethyst-Android) (LGP
 |---|---|---|
 | Branding | Name "Mayoq Launcher", package `uz.mayoq.launcher` (debug: `uz.mayoq.launcher.debug`), new icons, game folder `games/Mayoq` on Android 9 and older | CI build; icon previewed |
 | Uzbek language | Full Uzbek (Latin) translation, `values-uz` | XML and format specifiers checked by script |
-| CI / distribution | GitHub Actions builds `mayoq-arm64.apk`, `mayoq-armv7.apk`, `mayoq-x86_64.apk`; public release publishing now requires an explicit manual opt-in on the default branch | Previous green build; new workflow pending CI |
+| CI / distribution | GitHub Actions builds `mayoq-arm64.apk`, `mayoq-armv7.apk`, `mayoq-x86_64.apk`; public release publishing requires an explicit manual opt-in on the default branch | Green CI on `b1c9c3b` and `d26082a`; publish job skipped |
 | Bundled Java | Java 8, 17 and 21 built into each per-ABI APK (`scripts/bundle_jre.py`) from the stable openjdk-build releases; no runtime download needed | Tested on LDPlayer (x86_64) |
 | Download reliability | 30 s timeout and up to 5 retries with backoff for game files | Tested on LDPlayer |
 | LWJGL fix | Natives re-extracted when missing after a reinstall (fixed `NoClassDefFoundError: org.lwjgl.glfw.GLFW`) | Game reached the world on LDPlayer |
 | Launcher profiles | Guest profile (nickname), separate from Minecraft accounts; `GameEntitlement` centralises ownership checks | CI build |
-| Google Sign-In | Credential Manager with the Web client ID; creates a local Mayoq identity with a stable UUID and user-selected local nickname | Focused JVM tests; **not tested on a device** |
-| Cloud sync | Manual backup/restore of allowlisted settings, control layouts and profile names to the Google Drive app data folder | Unit tests (`SyncSnapshotTest`, 5 tests) in CI; **not tested on a device** |
+| Google Sign-In | Credential Manager with the Web client ID; creates a local Mayoq identity with a stable UUID and user-selected local nickname | Focused JVM tests; physical Android test passed on 2026-10-02 |
+| Cloud sync | Manual backup/restore of allowlisted settings, control layouts and profile names to the Google Drive app data folder | Unit tests and physical Android backup/restore test passed on 2026-10-02 |
+
+## Milestone 2 physical-device validation
+
+The ARM64 debug APK from GitHub Actions was tested on a physical Android device on 2026-10-02.
+All planned Mayoq onboarding checks passed:
+
+- Google Sign-In completed and displayed the selected account's name and email.
+- A selected Minecraft nickname persisted across a full app restart and after Google sign-out and
+  re-sign-in to the same account.
+- Switching Google accounts worked, with each locally stored Mayoq identity retaining its own
+  nickname.
+- Google Drive manual backup and restore completed successfully.
+
+Mayoq identities remained launcher-only throughout these tests. Existing Microsoft accounts and
+their game-session behavior were preserved; Mayoq identities were not added to the Minecraft
+account selector.
 
 ## Unfinished
 
-- Google Sign-In, local nickname selection and cloud sync have never been run on a real device or emulator.
 - Cloud sync is manual only (no automatic backup).
 - Release signing: APKs are signed with the public upstream debug keystore. A private release key
   and a matching Android OAuth client (release package `uz.mayoq.launcher`) were never set up.
