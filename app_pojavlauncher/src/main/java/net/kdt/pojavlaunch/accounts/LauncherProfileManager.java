@@ -1,8 +1,8 @@
 package net.kdt.pojavlaunch.accounts;
 
+import android.util.AtomicFile;
 import android.util.Log;
 
-import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import com.google.gson.JsonParseException;
@@ -11,6 +11,8 @@ import net.kdt.pojavlaunch.Tools;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,18 +25,12 @@ import java.util.regex.Pattern;
  * a Minecraft account.
  */
 public final class LauncherProfileManager {
-    private static final String TAG = "LauncherProfileManager";
     private static final String FILE_NAME = "launcher_identity.json";
     /** Display name only, so any letters (including Uzbek ones), digits, spaces and _ . - are fine */
     private static final Pattern NICKNAME_PATTERN = Pattern.compile("^[\\p{L}\\p{N}_ .-]{2,24}$");
 
-    @Keep
-    private static class Store {
-        String currentId;
-        List<LauncherProfile> profiles = new ArrayList<>();
-    }
-
-    private static Store sStore;
+    private static LauncherIdentityStore sStore;
+    private static boolean sReadFailed;
 
     private LauncherProfileManager() {}
 
@@ -44,16 +40,12 @@ public final class LauncherProfileManager {
     }
 
     public static synchronized boolean hasProfile() {
-        return !store().profiles.isEmpty();
+        return store().current() != null;
     }
 
     @Nullable
     public static synchronized LauncherProfile getCurrent() {
-        Store store = store();
-        for (LauncherProfile profile : store.profiles) {
-            if (profile.id.equals(store.currentId)) return profile;
-        }
-        return store.profiles.isEmpty() ? null : store.profiles.get(0);
+        return store().current();
     }
 
     public static synchronized List<LauncherProfile> getAll() {
@@ -74,50 +66,39 @@ public final class LauncherProfileManager {
         guest.type = LauncherProfile.Type.GUEST;
         guest.displayName = nickname.trim();
         guest.createdAt = System.currentTimeMillis();
-        Store store = store();
+        LauncherIdentityStore store = store();
         store.profiles.add(guest);
         store.currentId = guest.id;
         save();
         return guest;
     }
 
-    /** Creates or updates the Google launcher profile for this email and selects it */
-    public static synchronized LauncherProfile saveGoogle(String email, @Nullable String displayName) {
-        Store store = store();
-        LauncherProfile google = null;
-        for (LauncherProfile profile : store.profiles) {
-            if (profile.type == LauncherProfile.Type.GOOGLE && email.equalsIgnoreCase(profile.email)) {
-                google = profile;
-                break;
-            }
-        }
-        if (google == null) {
-            google = new LauncherProfile();
-            google.id = UUID.randomUUID().toString();
-            google.type = LauncherProfile.Type.GOOGLE;
-            google.email = email;
-            google.createdAt = System.currentTimeMillis();
-            store.profiles.add(google);
-        }
-        google.displayName = displayName == null || displayName.trim().isEmpty() ? email : displayName.trim();
-        store.currentId = google.id;
+    /** Creates or migrates a Google identity without touching existing Minecraft accounts. */
+    public static synchronized LauncherProfile saveGoogle(String subject, String email, @Nullable String displayName) {
+        LauncherProfile google = store().signInGoogle(subject, email, displayName);
         save();
         return google;
     }
 
-    /** @return the signed-in Google launcher profile, if any */
     @Nullable
     public static synchronized LauncherProfile getGoogleProfile() {
-        for (LauncherProfile profile : store().profiles) {
-            if (profile.type == LauncherProfile.Type.GOOGLE) return profile;
-        }
-        return null;
+        return store().google();
+    }
+
+    public static synchronized void signOutGoogle() {
+        store().signOutGoogle();
+        save();
+    }
+
+    public static synchronized void saveMinecraftNickname(String id, String nickname) {
+        store().setMinecraftNickname(id, nickname);
+        save();
     }
 
     /** Adds a guest profile restored from a backup, unless one with that name already exists */
     public static synchronized void addGuestIfMissing(@Nullable String nickname) {
         if (!isValidNickname(nickname)) return;
-        Store store = store();
+        LauncherIdentityStore store = store();
         for (LauncherProfile profile : store.profiles) {
             if (profile.type == LauncherProfile.Type.GUEST && profile.displayName.equals(nickname.trim())) return;
         }
@@ -137,7 +118,7 @@ public final class LauncherProfileManager {
     }
 
     public static synchronized void remove(String id) {
-        Store store = store();
+        LauncherIdentityStore store = store();
         for (int i = 0; i < store.profiles.size(); i++) {
             if (store.profiles.get(i).id.equals(id)) {
                 store.profiles.remove(i);
@@ -150,39 +131,51 @@ public final class LauncherProfileManager {
         save();
     }
 
-    private static File file() {
-        return new File(Tools.DIR_DATA, FILE_NAME);
+    private static AtomicFile file() {
+        return new AtomicFile(new File(Tools.DIR_DATA, FILE_NAME));
     }
 
-    private static Store store() {
+    private static LauncherIdentityStore store() {
         if (sStore == null) sStore = load();
         return sStore;
     }
 
-    private static Store load() {
-        File file = file();
-        if (!file.isFile()) return new Store();
+    private static LauncherIdentityStore load() {
+        AtomicFile file = file();
+        sReadFailed = false;
+        // AtomicFile recovers its .bak on open after an interrupted write.
+        if (!file.getBaseFile().exists() && !new File(file.getBaseFile() + ".bak").exists()) {
+            return new LauncherIdentityStore();
+        }
         try {
-            Store store = Tools.GLOBAL_GSON.fromJson(Tools.read(file.getAbsolutePath()), Store.class);
-            if (store == null) return new Store();
-            if (store.profiles == null) store.profiles = new ArrayList<>();
-            // Drop entries a newer or broken file might contain that this version cannot use
-            for (int i = store.profiles.size() - 1; i >= 0; i--) {
-                LauncherProfile profile = store.profiles.get(i);
-                if (profile == null || profile.id == null || profile.type == null) store.profiles.remove(i);
-            }
+            LauncherIdentityStore store = Tools.GLOBAL_GSON.fromJson(
+                    new String(file.readFully(), StandardCharsets.UTF_8), LauncherIdentityStore.class);
+            if (store == null) throw new JsonParseException("Empty identity store");
+            store.normalize();
             return store;
         } catch (IOException | JsonParseException e) {
-            Log.e(TAG, "Failed to read launcher profiles, starting fresh", e);
-            return new Store();
+            // Keep the launcher usable, but refuse writes over unreadable identity data.
+            sReadFailed = true;
+            Log.e("LauncherProfileManager", "Cannot read launcher identities; preserving the file");
+            return new LauncherIdentityStore();
         }
     }
 
     private static void save() {
+        if (sReadFailed) {
+            sStore = null;
+            throw new IllegalStateException("Existing launcher identities could not be read");
+        }
+        AtomicFile file = file();
+        FileOutputStream output = null;
         try {
-            Tools.write(file().getAbsolutePath(), Tools.GLOBAL_GSON.toJson(sStore));
+            output = file.startWrite();
+            output.write(Tools.GLOBAL_GSON.toJson(sStore).getBytes(StandardCharsets.UTF_8));
+            file.finishWrite(output);
         } catch (IOException e) {
-            Log.e(TAG, "Failed to save launcher profiles", e);
+            file.failWrite(output);
+            sStore = null; // Reload the last committed store; never report an unsaved UUID as saved.
+            throw new IllegalStateException("Unable to save launcher identities", e);
         }
     }
 }

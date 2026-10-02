@@ -407,7 +407,7 @@ public class JREUtils {
 
         userArgs.addAll(JVMArgs);
         activity.runOnUiThread(() -> Toast.makeText(activity, activity.getString(R.string.autoram_info_msg,LauncherPreferences.PREF_RAM_ALLOCATION), Toast.LENGTH_SHORT).show());
-        System.out.println(JVMArgs);
+        // Game arguments include the Minecraft access token; never log this list.
 
         initJavaRuntime(runtimeHome);
         JREUtils.setupExitMethod(activity.getApplication());

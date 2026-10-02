@@ -39,9 +39,13 @@ public class GuestProfileFragment extends Fragment {
                         context.getString(R.string.guest_profile_bad_nickname_text));
                 return;
             }
-            LauncherProfile guest = LauncherProfileManager.saveGuest(nickname);
-            Toast.makeText(context, context.getString(R.string.guest_profile_welcome, guest.displayName), Toast.LENGTH_SHORT).show();
-            Tools.backToMainMenu(requireActivity());
+            try {
+                LauncherProfile guest = LauncherProfileManager.saveGuest(nickname);
+                Toast.makeText(context, context.getString(R.string.guest_profile_welcome, guest.displayName), Toast.LENGTH_SHORT).show();
+                Tools.backToMainMenu(requireActivity());
+            } catch (IllegalStateException error) {
+                Toast.makeText(context, R.string.mayoq_identity_save_failed, Toast.LENGTH_LONG).show();
+            }
         });
     }
 }

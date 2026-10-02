@@ -525,4 +525,11 @@
     <string name="cloud_sync_never">Bu qurilmadan hali zaxira qilinmagan</string>
     <string name="cloud_sync_last_backup">Oxirgi zaxira: %1$s</string>
 
+
+    <string name="mayoq_identity_description">Mayoq akkaunti (norasmiy). Bu akkaunt tasdiqlangan Minecraft serverlari yoki rasmiy skin va plashlardan foydalanish huquqini bermaydi.</string>
+    <string name="mayoq_nickname_hint">Minecraft nikneymi</string>
+    <string name="mayoq_nickname_save">Nikneymni saqlash</string>
+    <string name="mayoq_nickname_saved">Nikneym qurilmada saqlandi. Oʻyinga kirish uchun tanlangan Minecraft akkaunti ishlatiladi.</string>
+    <string name="mayoq_nickname_invalid">3–16 ta lotin harfi (A–Z), raqam yoki pastki chiziq ishlating. Bu qurilmada boshqa Mayoq akkaunti ishlatmayotgan nomni tanlang.</string>
+    <string name="mayoq_identity_save_failed">Mayoq akkauntini saqlab boʻlmadi. Boʻsh joyni tekshirib, qayta urinib koʻring.</string>
 </resources>

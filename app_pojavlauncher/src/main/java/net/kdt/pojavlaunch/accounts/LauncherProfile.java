@@ -17,5 +17,12 @@ public class LauncherProfile {
     public String displayName;
     /** Google account email, null for guests */
     @Nullable public String email;
+    /** Provider subject, obtained only from Credential Manager. Never a Minecraft credential. */
+    @Nullable public String googleSubject;
+    /** Local Minecraft nickname; independent from the Google display name. */
+    @Nullable public String minecraftNickname;
+    @Nullable public String playerUuid;
+    /** Keep identity metadata on sign-out so signing back in preserves the nickname. */
+    public boolean googleSignedOut;
     public long createdAt;
 }

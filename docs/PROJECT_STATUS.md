@@ -1,11 +1,11 @@
 # Mayoq Launcher: project status
 
-**Status: paused** (2026-10-01). Development stopped at the owner's request. No features are in
-progress. The branch `claude/gifted-feynman-rcuxcm` and the `latest` release are kept as they are.
+**Status: active development** (2026-10-02). Work is being done on an isolated development branch;
+the `latest` public release remains unchanged.
 
-The product requirement that ended development: downloading and launching Minecraft: Java Edition
-without an account that owns the game. That is not implemented and will not be, because it means
-distributing a paid game without a license. See `docs/auth-architecture.md`.
+Downloading and launching Minecraft: Java Edition without an account that owns the game is not
+implemented. Any change to download or launch eligibility requires a separate compatibility and
+licensing review before implementation. See `docs/auth-architecture.md`.
 
 ## Base
 
@@ -19,23 +19,23 @@ Fork of [Amethyst-Android](https://github.com/AngelAuraMC/Amethyst-Android) (LGP
 |---|---|---|
 | Branding | Name "Mayoq Launcher", package `uz.mayoq.launcher` (debug: `uz.mayoq.launcher.debug`), new icons, game folder `games/Mayoq` on Android 9 and older | CI build; icon previewed |
 | Uzbek language | Full Uzbek (Latin) translation, `values-uz` | XML and format specifiers checked by script |
-| CI / distribution | GitHub Actions builds `mayoq-arm64.apk`, `mayoq-armv7.apk`, `mayoq-x86_64.apk` and publishes them to the `latest` release | Green builds |
+| CI / distribution | GitHub Actions builds `mayoq-arm64.apk`, `mayoq-armv7.apk`, `mayoq-x86_64.apk`; public release publishing now requires an explicit manual opt-in on the default branch | Previous green build; new workflow pending CI |
 | Bundled Java | Java 8, 17 and 21 built into each per-ABI APK (`scripts/bundle_jre.py`) from the stable openjdk-build releases; no runtime download needed | Tested on LDPlayer (x86_64) |
 | Download reliability | 30 s timeout and up to 5 retries with backoff for game files | Tested on LDPlayer |
 | LWJGL fix | Natives re-extracted when missing after a reinstall (fixed `NoClassDefFoundError: org.lwjgl.glfw.GLFW`) | Game reached the world on LDPlayer |
 | Launcher profiles | Guest profile (nickname), separate from Minecraft accounts; `GameEntitlement` centralises ownership checks | CI build |
-| Google Sign-In | Credential Manager with the Web client ID; creates a Google launcher profile | CI build only, **not tested on a device** |
+| Google Sign-In | Credential Manager with the Web client ID; creates a local Mayoq identity with a stable UUID and user-selected local nickname | Focused JVM tests; **not tested on a device** |
 | Cloud sync | Manual backup/restore of allowlisted settings, control layouts and profile names to the Google Drive app data folder | Unit tests (`SyncSnapshotTest`, 5 tests) in CI; **not tested on a device** |
 
 ## Unfinished
 
-- Google Sign-In and cloud sync have never been run on a real device or emulator.
+- Google Sign-In, local nickname selection and cloud sync have never been run on a real device or emulator.
 - Cloud sync is manual only (no automatic backup).
 - Release signing: APKs are signed with the public upstream debug keystore. A private release key
   and a matching Android OAuth client (release package `uz.mayoq.launcher`) were never set up.
 - Telegram link: the main menu still has Amethyst's Wiki and Discord buttons.
-- Mayoq account redesign (account screen, "Playing as" bar, nickname registration) was proposed
-  but not started.
+- Mayoq game-session integration is not started: Mayoq identities are not passed to Minecraft and
+  do not change download or launch eligibility yet.
 - Server list, low-end device preset: proposed, not started.
 
 ## Known issues

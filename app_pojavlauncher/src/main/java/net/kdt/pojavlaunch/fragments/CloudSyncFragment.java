@@ -9,6 +9,7 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.EditText;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.IntentSenderRequest;
@@ -47,6 +48,9 @@ public class CloudSyncFragment extends Fragment {
     private ActivityResultLauncher<IntentSenderRequest> mConsentLauncher;
     @Nullable private Action mPendingAction;
     private boolean mBusy;
+    private EditText mNicknameEdit;
+    private View mIdentitySection, mNicknameSave;
+    @Nullable private String mDisplayedIdentity;
 
     private TextView mAccountText, mLastSyncText, mStatusText;
     private View mProgress, mSignInButton, mBackupButton, mRestoreButton, mSignOutButton;
@@ -80,6 +84,11 @@ public class CloudSyncFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        mIdentitySection = view.findViewById(R.id.mayoq_identity_section);
+        mNicknameEdit = view.findViewById(R.id.mayoq_nickname_edit);
+        mNicknameSave = view.findViewById(R.id.mayoq_nickname_save);
+        mDisplayedIdentity = null;
+        mNicknameSave.setOnClickListener(v -> saveNickname());
         mAccountText = view.findViewById(R.id.cloud_account_text);
         mLastSyncText = view.findViewById(R.id.cloud_last_sync_text);
         mStatusText = view.findViewById(R.id.cloud_status_text);
@@ -101,17 +110,38 @@ public class CloudSyncFragment extends Fragment {
         updateUi();
     }
 
+    private void saveNickname() {
+        LauncherProfile google = LauncherProfileManager.getGoogleProfile();
+        if (google == null) return;
+        try {
+            LauncherProfileManager.saveMinecraftNickname(google.id, mNicknameEdit.getText().toString());
+            mNicknameEdit.setError(null);
+            finish(R.string.mayoq_nickname_saved);
+        } catch (IllegalArgumentException error) {
+            mNicknameEdit.setError(getString(R.string.mayoq_nickname_invalid));
+        } catch (IllegalStateException error) {
+            finish(R.string.mayoq_identity_save_failed);
+        }
+    }
+
     private void signIn() {
         if (!Tools.isOnline(requireContext())) {
             mStatusText.setText(R.string.cloud_sync_offline);
             return;
         }
+        Context appContext = requireContext().getApplicationContext();
         setBusy(true);
         GoogleAuth.signIn(requireActivity(), new GoogleAuth.SignInCallback() {
             @Override
-            public void onSignedIn(String email, @Nullable String displayName) {
-                LauncherProfileManager.saveGoogle(email, displayName);
-                finish(R.string.google_sign_in_done);
+            public void onSignedIn(String subject, String email, @Nullable String displayName) {
+                try {
+                    LauncherProfile previous = LauncherProfileManager.getGoogleProfile();
+                    LauncherProfile google = LauncherProfileManager.saveGoogle(subject, email, displayName);
+                    if (previous == null || !previous.id.equals(google.id)) CloudSync.clearState(appContext);
+                    finish(R.string.google_sign_in_done);
+                } catch (IllegalStateException error) {
+                    finish(R.string.mayoq_identity_save_failed);
+                }
             }
 
             @Override
@@ -122,7 +152,7 @@ public class CloudSyncFragment extends Fragment {
             @Override
             public void onError(@NonNull String message, @Nullable Throwable cause) {
                 Log.w(LOG_TAG, "Google sign-in failed", cause);
-                if (!isAdded()) return;
+                if (!isAdded() || getView() == null) return;
                 setBusy(false);
                 mStatusText.setText(message);
             }
@@ -130,10 +160,14 @@ public class CloudSyncFragment extends Fragment {
     }
 
     private void signOut() {
-        LauncherProfile google = LauncherProfileManager.getGoogleProfile();
         setBusy(true);
         GoogleAuth.signOut(requireContext(), () -> {
-            if (google != null) LauncherProfileManager.remove(google.id);
+            try {
+                LauncherProfileManager.signOutGoogle();
+            } catch (IllegalStateException error) {
+                finish(R.string.mayoq_identity_save_failed);
+                return;
+            }
             Context context = getContext();
             if (context != null) CloudSync.clearState(context);
             finish(R.string.google_sign_out_done);
@@ -157,7 +191,12 @@ public class CloudSyncFragment extends Fragment {
 
     /** Gets a drive.appdata token, showing the consent screen when needed */
     private void requestToken(Action action, boolean allowRetry) {
-        GoogleAuth.authorizeDriveAppData(requireActivity())
+        LauncherProfile google = LauncherProfileManager.getGoogleProfile();
+        if (google == null || google.email == null) {
+            finish(R.string.cloud_sync_sign_in_first);
+            return;
+        }
+        GoogleAuth.authorizeDriveAppData(requireActivity(), google.email)
                 .addOnSuccessListener(requireActivity(), authorization -> {
                     if (authorization.hasResolution() && authorization.getPendingIntent() != null) {
                         mPendingAction = action;
@@ -219,7 +258,8 @@ public class CloudSyncFragment extends Fragment {
 
     /** Ends the current operation and shows a status message (0 for none) */
     private void finish(@StringRes int message) {
-        if (!isAdded()) return;
+        mBusy = false;
+        if (!isAdded() || getView() == null) return;
         setBusy(false);
         mStatusText.setText(message == 0 ? "" : getString(message));
         updateUi();
@@ -232,6 +272,8 @@ public class CloudSyncFragment extends Fragment {
         mBackupButton.setEnabled(!busy);
         mRestoreButton.setEnabled(!busy);
         mSignOutButton.setEnabled(!busy);
+        mNicknameEdit.setEnabled(!busy);
+        mNicknameSave.setEnabled(!busy);
     }
 
     private void updateUi() {
@@ -240,7 +282,15 @@ public class CloudSyncFragment extends Fragment {
         mAccountText.setText(signedIn
                 ? getString(R.string.google_signed_in_as, google.displayName, google.email)
                 : getString(R.string.google_not_signed_in));
-        mSignInButton.setVisibility(signedIn ? View.GONE : View.VISIBLE);
+        mIdentitySection.setVisibility(signedIn && google.playerUuid != null ? View.VISIBLE : View.GONE);
+        if (signedIn && !google.id.equals(mDisplayedIdentity)) {
+            mNicknameEdit.setText(google.minecraftNickname == null ? "" : google.minecraftNickname);
+            mDisplayedIdentity = google.id;
+        } else if (!signedIn) {
+            mDisplayedIdentity = null;
+            mNicknameEdit.setText("");
+        }
+        mSignInButton.setVisibility(signedIn && google.googleSubject != null ? View.GONE : View.VISIBLE);
         mBackupButton.setVisibility(signedIn ? View.VISIBLE : View.GONE);
         mRestoreButton.setVisibility(signedIn ? View.VISIBLE : View.GONE);
         mSignOutButton.setVisibility(signedIn ? View.VISIBLE : View.GONE);

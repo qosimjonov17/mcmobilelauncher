@@ -570,4 +570,11 @@
     <string name="cloud_sync_never">No backup made from this device yet</string>
     <string name="cloud_sync_last_backup">Last backup: %1$s</string>
 
+
+    <string name="mayoq_identity_description">Mayoq account (unofficial). This account does not provide access to authenticated Minecraft servers or official skins and capes.</string>
+    <string name="mayoq_nickname_hint">Minecraft nickname</string>
+    <string name="mayoq_nickname_save">Save nickname</string>
+    <string name="mayoq_nickname_saved">Nickname saved locally. Game access still uses the selected Minecraft account.</string>
+    <string name="mayoq_nickname_invalid">Use 3–16 letters (A–Z), numbers or underscores. Choose a name not already used by another Mayoq identity on this device.</string>
+    <string name="mayoq_identity_save_failed">Could not save your Mayoq identity. Check available storage and try again.</string>
 </resources>

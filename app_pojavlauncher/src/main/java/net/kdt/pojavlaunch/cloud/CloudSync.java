@@ -48,6 +48,7 @@ public final class CloudSync {
         }
 
         for (LauncherProfile profile : LauncherProfileManager.getAll()) {
+            if (profile.type == LauncherProfile.Type.GOOGLE && profile.googleSignedOut) continue;
             SyncSnapshot.ProfileInfo info = new SyncSnapshot.ProfileInfo();
             info.type = profile.type.name();
             info.displayName = profile.displayName;

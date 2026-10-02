@@ -41,6 +41,36 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_4sdp" />
 
+        <LinearLayout
+            android:id="@+id/mayoq_identity_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/mayoq_identity_description" />
+
+            <EditText
+                android:id="@+id/mayoq_nickname_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mayoq_nickname_hint"
+                android:inputType="textVisiblePassword|textNoSuggestions"
+                android:maxLength="16"
+                android:singleLine="true" />
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/mayoq_nickname_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mayoq_nickname_save"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
         <ProgressBar
             android:id="@+id/cloud_progress"
             style="?android:attr/progressBarStyleHorizontal"

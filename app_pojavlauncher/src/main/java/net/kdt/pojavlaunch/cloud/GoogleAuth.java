@@ -1,6 +1,9 @@
 package net.kdt.pojavlaunch.cloud;
 
 import android.app.Activity;
+import android.accounts.Account;
+import android.util.Base64;
+import java.nio.charset.StandardCharsets;
 import android.content.Context;
 import android.os.CancellationSignal;
 
@@ -40,7 +43,7 @@ public final class GoogleAuth {
     private GoogleAuth() {}
 
     public interface SignInCallback {
-        void onSignedIn(String email, @Nullable String displayName);
+        void onSignedIn(String subject, String email, @Nullable String displayName);
         void onCancelled();
         void onError(@NonNull String message, @Nullable Throwable cause);
     }
@@ -59,8 +62,16 @@ public final class GoogleAuth {
                         Credential credential = response.getCredential();
                         if (credential instanceof CustomCredential
                                 && GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL.equals(credential.getType())) {
-                            GoogleIdTokenCredential google = GoogleIdTokenCredential.Companion.createFrom(credential.getData());
-                            callback.onSignedIn(google.getId(), google.getDisplayName());
+                            try {
+                                GoogleIdTokenCredential google = GoogleIdTokenCredential.Companion.createFrom(credential.getData());
+                                String[] parts = google.getIdToken().split("\\.", -1);
+                                if (parts.length != 3) throw new IllegalArgumentException();
+                                String payload = new String(Base64.decode(parts[1], Base64.URL_SAFE | Base64.NO_WRAP), StandardCharsets.UTF_8);
+                                String subject = GoogleIdentityClaims.subject(payload, webClientId, System.currentTimeMillis() / 1000);
+                                callback.onSignedIn(subject, google.getId(), google.getDisplayName());
+                            } catch (Exception error) {
+                                callback.onError(activity.getString(R.string.google_sign_in_unexpected), null);
+                            }
                         } else {
                             callback.onError(activity.getString(R.string.google_sign_in_unexpected), null);
                         }
@@ -90,8 +101,9 @@ public final class GoogleAuth {
      * Requests an access token for the hidden Drive app data folder only. If the user has not
      * granted it yet (or revoked it), the result carries a PendingIntent to show the consent screen.
      */
-    public static Task<AuthorizationResult> authorizeDriveAppData(Context context) {
+    public static Task<AuthorizationResult> authorizeDriveAppData(Context context, String email) {
         AuthorizationRequest request = AuthorizationRequest.builder()
+                .setAccount(new Account(email, "com.google"))
                 .setRequestedScopes(Collections.singletonList(new Scope(DriveAppDataClient.SCOPE_DRIVE_APPDATA)))
                 .build();
         return Identity.getAuthorizationClient(context).authorize(request);
