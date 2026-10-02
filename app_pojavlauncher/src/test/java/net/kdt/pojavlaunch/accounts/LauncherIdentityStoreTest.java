@@ -68,6 +68,26 @@ public class LauncherIdentityStoreTest {
         assertEquals(2, store.profiles.size());
     }
 
+    @Test public void restartAndAccountSwitchKeepEachGoogleIdentityNicknameAndUuid() {
+        LauncherIdentityStore store = new LauncherIdentityStore();
+        LauncherProfile first = store.signInGoogle("subject-a", "a@example.com", "Alice");
+        store.setMinecraftNickname(first.id, "Alice_One");
+        String firstUuid = first.playerUuid;
+
+        LauncherProfile second = store.signInGoogle("subject-b", "b@example.com", "Bob");
+        store.setMinecraftNickname(second.id, "Bob_One");
+        String secondUuid = second.playerUuid;
+        store = reload(store);
+
+        assertEquals("Bob_One", store.google().minecraftNickname);
+        assertEquals(secondUuid, store.google().playerUuid);
+        LauncherProfile restoredFirst = store.signInGoogle("subject-a", "a@example.com", "Alice");
+        assertEquals("Alice_One", restoredFirst.minecraftNickname);
+        assertEquals(firstUuid, restoredFirst.playerUuid);
+        assertEquals(restoredFirst.id, store.current().id);
+        assertEquals(2, store.profiles.size());
+    }
+
     @Test public void signOutRetainsIdentityAndReturnsToGuest() {
         LauncherIdentityStore store = new LauncherIdentityStore();
         LauncherProfile guest = new LauncherProfile();
